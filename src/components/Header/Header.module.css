@@ -1,0 +1,44 @@
+.header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 24px;
+  background-color: #f3f7f1;
+}
+
+.headerLeft,
+.headerRight {
+  display: flex;
+  align-items: center;
+}
+
+.headerLeft__logo {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #095544;
+}
+
+.headerLeft__dropNav {
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 10px;
+}
+.headerLeft__dropNav:hover {
+  background-color: #dcedd4;
+}
+.dropNav__icon {
+  margin-left: 5px;
+}
+
+.headerRight div {
+  font-size: 30px;
+  color: #b5b5bb;
+}
+.headerRight div:not(:first-child) {
+  margin-left: 18px;
+}
+.profileImg {
+  width: 30px;
+  height: 30px;
+}

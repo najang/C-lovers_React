@@ -1,0 +1,25 @@
+.naviConp {
+  display: flex;
+  padding: 10px 15px;
+  font-size: 18px;
+  margin: 0px 20px 5px 20px;
+}
+
+/* .naviconp__color {
+  background-color: #dcedd4;
+  
+  display: flex;
+}
+.naviconp__noncolor {
+  padding: 10px 15px;
+  display: flex;
+} */
+/* .naviconp__noncolor:hover {
+  background-color: #dcedd4;
+} */
+
+.naviConp__icon {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
