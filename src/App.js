@@ -1,8 +1,17 @@
-import logo from "./logo.svg";
 import "./App.css";
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Main from "./pages/Main/Main";
 
 function App() {
-  return <div>test</div>;
+  return (
+    <Router basename='/admin'>
+    <div className="container">
+      <Routes>
+        <Route path="/" element={<Main />}/>
+      </Routes>
+    </div>
+  </Router>
+  );
 }
 
 export default App;

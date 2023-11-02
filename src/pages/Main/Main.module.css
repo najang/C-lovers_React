@@ -1,0 +1,11 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.container {
+    min-width: 744px;
+    margin-bottom: 50px; 
+}
