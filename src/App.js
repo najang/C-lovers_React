@@ -5,11 +5,9 @@ import Main from "./pages/Main/Main";
 function App() {
   return (
     <Router basename='/admin'>
-    <div className="container">
       <Routes>
         <Route path="/" element={<Main />}/>
       </Routes>
-    </div>
   </Router>
   );
 }
