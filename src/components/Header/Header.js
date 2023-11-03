@@ -3,12 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faComment, faBell } from "@fortawesome/free-regular-svg-icons";
 import profile from "../../assets/ProfileImg/profile.png";
+import { Link } from "react-router-dom";
 
 const Header = ({ title }) => {
   return (
     <div className={style.header}>
       <div className={style.headerLeft}>
-        <div className={style.headerLeft__logo}>C-lovers</div>
+        <Link to="/">
+          <div className={style.headerLeft__logo}>C-lovers</div>
+        </Link>
+
         {title !== "오피스 홈" ? (
           <div className={style.headerLeft__dropNav}>
             {title}
@@ -18,7 +22,7 @@ const Header = ({ title }) => {
             />
           </div>
         ) : (
-          <div className={style.headerLeft__dropNav}>{title}</div>
+          <div className={style.headerLeft__Nav}>{title}</div>
         )}
       </div>
       <div className={style.headerRight}>

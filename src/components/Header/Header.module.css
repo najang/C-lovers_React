@@ -19,7 +19,8 @@
   color: #095544;
 }
 
-.headerLeft__dropNav {
+.headerLeft__dropNav,
+.headerLeft__Nav {
   border-radius: 5px;
   padding: 5px 10px;
   margin-left: 10px;
@@ -27,6 +28,7 @@
 .headerLeft__dropNav:hover {
   background-color: #dcedd4;
 }
+
 .dropNav__icon {
   margin-left: 5px;
 }
