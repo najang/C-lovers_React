@@ -1,0 +1,44 @@
+.contentBox__calendar {
+    height: 365px;
+    background-color: #7d7d7d20;
+}
+
+.schedule hr {
+    margin: 30px 0px;
+}
+
+.scheduleList__scheduleItem {
+    display: flex;
+    border: 1px solid #7d7d7d20;
+    border-radius: 4px;
+    height: 70px;
+    padding: 15px 10px;
+    color: #6C6C72;
+}
+
+.scheduleItem__date {
+    width: 74px;
+    text-align: center;
+}
+
+.date__dayNum {
+    font-size: 14px;
+}
+
+.date__dayText {
+    margin-top: 2px;
+    font-size: 12px;
+}
+
+.scheduleItem__plan {
+    margin-left: 30px;
+}
+
+.plan__title {
+    font-size: 14px;
+    color: #000000;
+}
+
+.plan__time {
+    font-size: 12px;
+}

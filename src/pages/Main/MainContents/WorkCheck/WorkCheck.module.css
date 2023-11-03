@@ -1,0 +1,46 @@
+.contentBox__date {
+    font-size: 14px;
+    color: #6C6C72;
+}
+
+.contentBox__timeline {
+    display: flex;
+    height: 35px;
+}
+
+.timeline__time {
+    font-size: 26px;
+}
+
+.timeline__status {
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    border-radius: 5px;
+    background-color: #DCEDD4;
+}
+
+.contentBox__commute {
+    display: flex;
+    margin-top: 30px;
+    height: 43px;
+}
+
+.contentBox__commute > div {
+    text-align: center;
+}
+
+.commute__work {
+    width: 130px;
+}
+
+.work__text {
+    font-size: 16px;
+}
+
+.work__time {
+    font-size: 12px;
+    color: #B5B5BB;
+}

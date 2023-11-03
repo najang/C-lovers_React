@@ -1,15 +1,17 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Header from "./components/Header/Header";
+
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Office from "./pages/Office/Office";
+import Main from "./pages/Main/Main";
 
 function App() {
   return (
-    <Router basename="/admin">
+    <Router basename='/admin'>
       <Routes>
+        <Route path="/" element={<Main />}/>
         <Route path="/office/*" element={<Office />}></Route>
       </Routes>
-    </Router>
+  </Router>
   );
 }
 
