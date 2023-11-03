@@ -1,0 +1,108 @@
+/* 모달창 띄울 때 배경화면 */
+.container {
+  /* 모달창 크기 */
+  width: 100%;
+  height: 100%;
+  margin: 0;
+
+  /* 최상단 위치 */
+  z-index: 999;
+
+  /* 중앙 배치 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* 모달창 디자인 */
+  background-color: #00000020;
+}
+
+/* 모달창 */
+.modalBox {
+  width: 350px;
+  height: 230px;
+  margin: 0 auto;
+
+  /* 중앙 배치 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: white;
+  border: 1px solid #7d7d7d20;
+  border-radius: 7px;
+  padding: 30px;
+}
+
+/* 모달 제목 */
+.modalBox__title {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #7d7d7d40;
+  font-weight: 700;
+}
+
+/* 모달창 내부 X버튼 */
+.close {
+  cursor: pointer;
+}
+
+/* 모달창 내용 본문 */
+.modal__body {
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* 셀렉터 */
+.selectionValue {
+  padding: 10px;
+  border: 1px solid #7d7d7d40;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+.select__option {
+  border: 1px solid #7d7d7d40;
+  background-color: white;
+  /* 최상단 위치 */
+  z-index: 999;
+  /* 중앙 배치 */
+  position: absolute;
+  top: 137px;
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+  transform: translateX(-50%);
+  width: calc(100% - 60px);
+  height: 260px;
+  overflow: auto;
+}
+.select__option::-webkit-scrollbar {
+  width: 20px;
+}
+.select__option::-webkit-scrollbar-thumb {
+  background-color: #7d7d7d20;
+  border-radius: 10px;
+
+  border: 7px solid #ffffff; /* 스크롤을 적용할 영역 색깔과 border 색상을 똑같이 맞춘다 */
+}
+.select__option::-webkit-scrollbar-track {
+  background-color: #ffffff; /* 스크롤바 뒷 배경을 투명 처리한다 */
+}
+
+.option__item {
+  padding: 10px;
+}
+.option__item:hover {
+  background-color: #f3f7f1;
+}
+.deleteBtn {
+  text-align: center;
+  margin-top: 30px;
+}
+.deleteBtn > button:last-child {
+  margin-left: 15px;
+}

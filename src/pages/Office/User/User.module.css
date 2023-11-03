@@ -15,14 +15,20 @@
   margin-bottom: 30px;
 }
 .userMenu {
+  display: flex;
   margin-left: 10px;
 }
-.userMenu * {
+.userMenu > div,
+button {
   margin-left: 10px;
   margin-right: 35px;
 }
+.userMenu > div {
+  width: 20px;
+  color: #095544;
+}
 
-.userMenu button {
+.userMenu > button {
   background-color: white;
   border: none;
   font-size: 16px;
@@ -36,7 +42,7 @@
 
 .userTable__header {
   display: flex;
-  background-color: #f3f7f1;
+  background-color: #dcedd4;
   padding: 10px 0px;
   text-align: center;
 }
@@ -64,4 +70,9 @@
   display: flex;
   padding: 10px 0px;
   text-align: center;
+  border-bottom: 1px solid #7d7d7d40;
+}
+
+.body__userInfo:hover {
+  background-color: #f3f7f1;
 }

@@ -3,7 +3,10 @@
   box-sizing: border-box;
   font-family: "Noto Sans KR", sans-serif;
   text-decoration: none;
+  list-style: none;
   color: black;
+  margin: 0;
+  padding: 0;
 }
 
 html,
@@ -11,6 +14,6 @@ body {
   height: 100%;
 }
 
-.container {
-  /* width: 100%; */
+input[type="checkbox"] {
+  accent-color: #095544;
 }
