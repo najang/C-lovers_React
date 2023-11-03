@@ -22,7 +22,7 @@ const Office = () => {
       <Header title="오피스 관리"></Header>
       <div className={style.container__body}>
         <NaviBar></NaviBar>
-        <div className="body__main">
+        <div className={style.body__main}>
           <Routes>
             <Route path="/" element={<Page0 />}></Route>
             <Route path="/administrator" element={<Page1 />}></Route>

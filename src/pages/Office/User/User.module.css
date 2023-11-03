@@ -1,0 +1,67 @@
+.user__container {
+  padding: 20px 24px;
+  width: 100%;
+}
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+.userInfo {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.userMenu {
+  margin-left: 10px;
+}
+.userMenu * {
+  margin-left: 10px;
+  margin-right: 35px;
+}
+
+.userMenu button {
+  background-color: white;
+  border: none;
+  font-size: 16px;
+  color: #095544;
+  cursor: pointer;
+}
+
+.userTable {
+  margin-top: 20px;
+}
+
+.userTable__header {
+  display: flex;
+  background-color: #f3f7f1;
+  padding: 10px 0px;
+  text-align: center;
+}
+
+.selector {
+  width: 10%;
+}
+.name {
+  width: 20%;
+}
+.userId {
+  width: 20%;
+}
+.worktype {
+  width: 20%;
+}
+.organization {
+  width: 20%;
+}
+.position {
+  width: 20%;
+}
+
+.body__userInfo {
+  display: flex;
+  padding: 10px 0px;
+  text-align: center;
+}
