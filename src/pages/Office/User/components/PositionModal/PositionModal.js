@@ -55,7 +55,7 @@ const PositionModal = ({ setPositionModalOpen }) => {
     >
       <div className={style.modalBox}>
         <div className={style.modalBox__title}>
-          <div className="title__title">근로형태 수정</div>
+          <div className="title__title">직위 수정</div>
           <div className={style.close} onClick={closeModal}>
             <FontAwesomeIcon icon={faXmark} />
           </div>

@@ -33,7 +33,7 @@ const Office = () => {
               <Route path="/" element={<Page0 />}></Route>
               <Route path="/administrator" element={<Page1 />}></Route>
               <Route path="/organization" element={<Page2 />}></Route>
-              <Route path="/user" element={<User />}></Route>
+              <Route path="/user/*" element={<User />}></Route>
               <Route path="/positionduty" element={<Page1 />}></Route>
               <Route path="/inactiveuser" element={<Page2 />}></Route>
             </Routes>

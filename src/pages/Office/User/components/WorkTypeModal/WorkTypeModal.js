@@ -21,7 +21,6 @@ const WorkTypeModal = ({ setWorkTypeModalOpen }) => {
     if (e.target === backgroundRef.current) {
       closeModal();
     }
-    console.log("배경");
   };
 
   //select box 커스텀
