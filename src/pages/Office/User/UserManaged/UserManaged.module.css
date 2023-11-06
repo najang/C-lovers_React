@@ -36,6 +36,11 @@
   cursor: pointer;
 }
 
+input[type="checkbox"] {
+  margin-top: 0px;
+  margin-right: 0px;
+}
+
 .userTable {
   margin-top: 20px;
 }
@@ -47,6 +52,16 @@
   text-align: center;
 }
 
+.userTable__header > div {
+  border-left: 1px solid #7d7d7d40;
+}
+
+.userTable__body > div > div:not(:first-child) {
+  text-align: start;
+  padding-left: 30px;
+  border-left: 1px solid #7d7d7d40;
+}
+
 .selector {
   width: 10%;
 }
@@ -54,13 +69,10 @@
   width: 20%;
 }
 .userId {
-  width: 20%;
-}
-.worktype {
-  width: 20%;
+  width: 25%;
 }
 .organization {
-  width: 20%;
+  width: 25%;
 }
 .position {
   width: 20%;
@@ -75,4 +87,11 @@
 
 .body__userInfo:hover {
   background-color: #f3f7f1;
+}
+
+.listZero {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  color: #b5b5bb;
 }

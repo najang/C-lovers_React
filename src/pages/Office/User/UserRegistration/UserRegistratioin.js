@@ -1,16 +1,12 @@
 import style from "./UserRegistration.module.css";
 import { useState, useEffect, useContext, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faXmark,
-  faAngleDown,
-  faAngleUp,
-} from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
 import GrayBtn from "../../../../components/GrayBtn/GrayBtn";
 import GreenBtn from "../../../../components/GreenBtn/GreenBtn";
 import { MenuContext } from "../../Office";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const UserRegistration = () => {
@@ -38,11 +34,19 @@ const UserRegistration = () => {
     daliy_work_rule_id: "",
   });
 
+  // 이름, 입사일 입력 검사 및 이메일, 휴대전화 입력시 유효성 검사
+  const [required, setRequired] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserInfo((prev) => ({ ...prev, [name]: value }));
-    console.log(userInfo);
   };
+  useEffect(() => {
+    console.log(userInfo.name);
+    if (userInfo.name !== "" && userInfo.hire_date !== "") {
+      setRequired(true);
+    }
+  });
 
   //select box 커스텀
   const [position, setPosition] = useState([{}]);
@@ -51,6 +55,8 @@ const UserRegistration = () => {
     axios.get("/office/position").then((resp) => {
       setPosition(resp.data);
       setPositionItem(resp.data[0]);
+      console.log(resp.data);
+      setUserInfo((prev) => ({ ...prev, job_id: resp.data[0].id }));
     });
   }, []);
 
@@ -70,6 +76,7 @@ const UserRegistration = () => {
     axios.get("/office/detpTask").then((resp) => {
       setDepartment(resp.data);
       setDepartmentItem(resp.data[0]);
+      setUserInfo((prev) => ({ ...prev, dept_task_id: resp.data[0].id }));
     });
   }, []);
 
@@ -93,6 +100,62 @@ const UserRegistration = () => {
       setShowDepartment(false);
     }
     console.log("test");
+  };
+
+  // 이메일 유효성 검사
+  const [eamilFormat, setEmailFormat] = useState(true);
+  let regexEmail =
+    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+  const isEmail = (email) => {
+    const { name, value } = email.target;
+    setUserInfo((prev) => ({ ...prev, [name]: value }));
+    setEmailFormat(regexEmail.test(value));
+    if (value === "") {
+      setEmailFormat(true);
+    }
+  };
+
+  // 전화번호 유효성 검사
+  const [phoneFormat, setPhoneFormat] = useState(true);
+  let regexPhone = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
+  const isPhone = (phone) => {
+    const { name, value } = phone.target;
+    setUserInfo((prev) => ({ ...prev, [name]: value }));
+    setPhoneFormat(regexPhone.test(value));
+    if (value === "") {
+      setPhoneFormat(true);
+    }
+  };
+
+  // 이메일, 전화번호 입력 시 유효성 검사 통과하면 저장 가능
+  const [options, setOptions] = useState(true);
+  useEffect(() => {
+    if (!eamilFormat || !phoneFormat) {
+      setOptions(false);
+    } else {
+      setOptions(true);
+    }
+  });
+
+  // 사용자 정보 등록
+  const navi = useNavigate();
+  const handleAddUser = () => {
+    console.log("저장 누름");
+    console.log(userInfo);
+    if (required) {
+      axios
+        .post("/office/userInsert", userInfo)
+        .then((resp) => {
+          navi("/office/user");
+        })
+        .catch((e) => {
+          alert(
+            "오류가 발생했습니다. 관리자에게 문의 하세요.\nemail : 0qwee0328@gmail.com"
+          );
+        });
+    } else {
+      alert("필수 정보를 입력해주세요");
+    }
   };
 
   return (
@@ -202,9 +265,14 @@ const UserRegistration = () => {
               type="text"
               placeholder="이메일 주소 입력"
               name="email"
-              onChange={handleChange}
+              onChange={isEmail}
             />
           </div>
+          {!eamilFormat && (
+            <div className={style.isFormat}>
+              이메일 형식이 올바르지 않습니다.
+            </div>
+          )}
         </div>
         <div className="info__phone">
           <div className={style.info__title}>휴대전화</div>
@@ -213,16 +281,15 @@ const UserRegistration = () => {
               type="text"
               placeholder="000-0000-0000"
               name="phone"
-              onChange={handleChange}
+              onChange={isPhone}
             />
           </div>
+          {!phoneFormat && (
+            <div className={style.isFormat}>
+              전화번호 형식이 올바르지 않습니다.
+            </div>
+          )}
         </div>
-        {/* <div className="info__officePhone">
-          <div className={style.info__title}>사내 전화</div>
-          <div>
-            <input type="text" placeholder="000" />
-          </div>
-        </div> */}
         <div className="info__brith">
           <div className={style.info__title}>생년월일</div>
           <div>
@@ -235,7 +302,11 @@ const UserRegistration = () => {
             <GrayBtn title={"취소"}></GrayBtn>
           </Link>
 
-          <GreenBtn title={"저장"} activation={true}></GreenBtn>
+          <GreenBtn
+            title={"저장"}
+            activation={required && options}
+            onClick={handleAddUser}
+          ></GreenBtn>
         </div>
       </div>
     </div>

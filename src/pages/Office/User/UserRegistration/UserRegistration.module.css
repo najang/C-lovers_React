@@ -91,3 +91,10 @@ input {
 .insertBtns > button:last-child {
   margin-left: 15px;
 }
+.isFormat {
+  color: #d5620a;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
