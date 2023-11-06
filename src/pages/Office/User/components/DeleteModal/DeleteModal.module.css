@@ -68,7 +68,7 @@
 .deleteCheck__list:not(:last-child) {
   margin-bottom: 15px;
 }
-input[type="checkbox"] {
+.inputBox {
   margin-top: 5px;
   margin-right: 15px;
 }
