@@ -1,7 +1,7 @@
 import MCStyle from "../MainContents.module.css"
-import style from "./Approval.module.css"
+import style from "./ApprovalBox.module.css"
 
-const Approval = () => {
+const ApprovalBox = () => {
     return (
         <div className={`${style.approval}`}>
             <div className={`${MCStyle.mainContents__title}`}>전자결재</div>
@@ -21,4 +21,4 @@ const Approval = () => {
     );
 }
 
-export default Approval;
+export default ApprovalBox;

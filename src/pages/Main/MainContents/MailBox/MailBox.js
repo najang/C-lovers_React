@@ -1,7 +1,7 @@
 import MCStyle from "../MainContents.module.css"
-import style from "./Mail.module.css"
+import style from "./MailBox.module.css"
 
-const Mail = () => {
+const MailBox = () => {
     return (
         <div className={`${style.mail}`}>
             <div className={`${MCStyle.mainContents__title}`}>메일함 바로가기</div>
@@ -16,4 +16,4 @@ const Mail = () => {
     );
 }
 
-export default Mail;
+export default MailBox;

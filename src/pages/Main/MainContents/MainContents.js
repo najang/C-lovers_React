@@ -1,19 +1,19 @@
 import MCStyle from "./MainContents.module.css"
-import Approval from "./Approval/Approval";
-import WorkCheck from "./WorkCheck/WorkCheck";
-import Mail from "./Mail/Mail";
-import Schedule from "./Schedule/Schdule";
+import ApprovalBox from "./ApprovalBox/ApprovalBox";
+import WorkCheckBox from "./WorkCheckBox/WorkCheckBox";
+import MailBox from "./MailBox/MailBox";
+import ScheduleBox from "./ScheduleBox/SchduleBox";
 
 const MainContents = () => {
     return (
         <div className={`${MCStyle.mainContents}`}>
             <div className={`${MCStyle.mainContents__left}`}>
-                <WorkCheck/>
-                <Approval />
-                <Mail />
+                <WorkCheckBox/>
+                <ApprovalBox />
+                <MailBox />
             </div>
             <div className={`${MCStyle.mainContents__right}`}>
-                <Schedule />
+                <ScheduleBox />
             </div>
         </div>
     );

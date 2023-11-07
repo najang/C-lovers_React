@@ -1,7 +1,7 @@
 import MCStyle from "../MainContents.module.css"
-import style from "./WorkCheck.module.css"
+import style from "./WorkCheckBox.module.css"
 
-const WorkCheck = () => {
+const WorkCheckBox = () => {
     return (
         <div className={`${style.workCheck}`}>
             <div className={`${MCStyle.mainContents__title}`}>근무체크</div>
@@ -37,4 +37,4 @@ const WorkCheck = () => {
     );
 }
 
-export default WorkCheck;
+export default WorkCheckBox;

@@ -1,12 +1,12 @@
 import MCStyle from "../MainContents.module.css"
-import style from "./Schedule.module.css"
+import style from "./ScheduleBox.module.css"
 
 const planDateNum = ["26", "27", "28"];
 const planDateText = ["목요일", "금요일", "토요일"];
 const planTitle = ["팀장 회의", "이슈 공유 회의", "등록된 일정이 없습니다."];
 const planTime = ["09:00 ~ 11:00", "16:30 ~ 17:30", ""];
 
-const Schedule = () => {
+const ScheduleBox = () => {
     return (
         <div className={`${style.schedule}`}>
             <div className={`${MCStyle.mainContents__title}`}>일정</div>
@@ -33,4 +33,4 @@ const Schedule = () => {
     );
 }
 
-export default Schedule;
+export default ScheduleBox;
