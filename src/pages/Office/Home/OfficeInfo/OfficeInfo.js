@@ -7,14 +7,15 @@ import { MenuContext } from '../../Office';
 
 
 const OfficeInfo = () => {
-    // const [numOfWorker, setNumOFWorker] = useState(0);
-    
-    // useEffect(
-    //     axios.get("/officer/numberOfOfficer").then((resp) =>{
-    //      setNumberOfWorker(resp.data.numberOfWorker)
-    //     },[])
-    // )
 
+
+    const [numOfWorker, setNumOFWorker] = useState(0);
+    
+    useEffect(() => {
+        axios.get("/office/empCount").then((resp) => {
+            setNumOFWorker(resp.data);
+        });
+      }, []);
 
     const {setSelectedMenu} = useContext(MenuContext);
 
@@ -39,7 +40,7 @@ const OfficeInfo = () => {
                     </tr>
                     <tr className={officeInfo.office__info__table__tr}>
                         <td><p className={officeInfo.office__info__table__p__index}>총 인원</p></td>
-                        <td><p className={officeInfo.office__info__table__p__index2}>10명</p></td>
+                        <td><p className={officeInfo.office__info__table__p__index2}>{`${numOfWorker} 명`}</p></td>
                         <td></td>
                     </tr>
                 </tbody>
