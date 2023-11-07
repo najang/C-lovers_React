@@ -6,7 +6,7 @@ import GreenBtn from "../../../../../components/GreenBtn/GreenBtn";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 
-const DeleteModal = ({ setDeleteModalOpen, checkItems }) => {
+const DeleteModal = ({ setDeleteModalOpen, checkItems, setDeleteModify }) => {
   // 모달창 닫기
   const closeModal = () => {
     setDeleteModalOpen(false);
@@ -76,11 +76,13 @@ const DeleteModal = ({ setDeleteModalOpen, checkItems }) => {
       .then((resp) => {
         alert("사용자가 삭제되었습니다.");
         closeModal();
-        window.location.replace("/admin/office/user");
+        // window.location.replace("/admin/office/user");
+        setDeleteModify(true);
       })
       .catch((e) => {
+        console.log(e);
         alert(
-          "오류가 발생했습니다. 관리자에게 문의 하세요.\nemail : 0qwee0328@gmail.com"
+          "오류가 발생했습니다. 관리자에게 문의 하세요!\nemail : 0qwee0328@gmail.com"
         );
       });
   };

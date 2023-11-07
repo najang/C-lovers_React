@@ -10,7 +10,11 @@ import GrayBtn from "../../../../../components/GrayBtn/GrayBtn";
 import GreenBtn from "../../../../../components/GreenBtn/GreenBtn";
 import axios from "axios";
 
-const DeptTaskModal = ({ setDeptTaskModalOpen, checkItems }) => {
+const DeptTaskModal = ({
+  setDeptTaskModalOpen,
+  checkItems,
+  setDeptTaskModify,
+}) => {
   // 모달창 닫기
   const closeModal = () => {
     setDeptTaskModalOpen(false);
@@ -70,7 +74,7 @@ const DeptTaskModal = ({ setDeptTaskModalOpen, checkItems }) => {
       .then((resp) => {
         alert("직위 수정이 완료되었습니다.");
         closeModal();
-        window.location.replace("/admin/office/user");
+        setDeptTaskModify(true);
       })
       .catch((e) => {
         alert(
