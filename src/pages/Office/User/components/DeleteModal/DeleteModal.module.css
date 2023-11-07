@@ -1,0 +1,81 @@
+/* 모달창 띄울 때 배경화면 */
+.container {
+  /* 모달창 크기 */
+  width: 100%;
+  height: 100%;
+  margin: 0;
+
+  /* 최상단 위치 */
+  z-index: 999;
+
+  /* 중앙 배치 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* 모달창 디자인 */
+  background-color: #00000020;
+}
+
+/* 모달창 */
+.modalBox {
+  width: 580px;
+  height: 455px;
+  margin: 0 auto;
+
+  /* 중앙 배치 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: white;
+  border: 1px solid #7d7d7d20;
+  border-radius: 7px;
+  padding: 30px;
+}
+.modalBox__title {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #7d7d7d40;
+  font-weight: 700;
+}
+
+/* 모달창 내부 X버튼 */
+.close {
+  cursor: pointer;
+}
+
+/* 모달창 내용 본문 */
+.modal__body {
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.deleteInfo {
+  line-height: 160%;
+}
+.deleteCheck {
+  margin-top: 30px;
+  background-color: #7d7d7d20;
+  padding: 20px;
+}
+.deleteCheck__list {
+  display: flex;
+}
+.deleteCheck__list:not(:last-child) {
+  margin-bottom: 15px;
+}
+.inputBox {
+  margin-top: 5px;
+  margin-right: 15px;
+}
+.deleteBtn {
+  text-align: center;
+  margin-top: 30px;
+}
+.deleteBtn > button:last-child {
+  margin-left: 15px;
+}

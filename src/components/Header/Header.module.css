@@ -19,7 +19,8 @@
   color: #095544;
 }
 
-.headerLeft__dropNav {
+.headerLeft__dropNav,
+.headerLeft__Nav {
   border-radius: 5px;
   padding: 5px 10px;
   margin-left: 10px;
@@ -27,18 +28,24 @@
 .headerLeft__dropNav:hover {
   background-color: #dcedd4;
 }
+
 .dropNav__icon {
   margin-left: 5px;
 }
 
-.headerRight div {
-  font-size: 30px;
+.headerRight * {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-size: 25px;
   color: #b5b5bb;
 }
 .headerRight div:not(:first-child) {
   margin-left: 18px;
 }
 .profileImg {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
 }

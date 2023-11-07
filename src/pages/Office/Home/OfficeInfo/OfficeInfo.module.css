@@ -1,0 +1,41 @@
+.office__info__div{
+    margin:20px;
+    padding:20px;
+    border: 1px solid #6c6c7250;
+    border-radius: 4px;
+}
+
+.office__info__title{
+    font-size: 20px;
+    font-weight : 700;
+    margin-bottom : 30px;
+    
+}
+
+.office__info__table__p__index{
+    margin-top: 10px;
+    margin-right: 40px;
+}
+
+.office__info__table__p__index2{
+    margin-top: 10px;
+    margin-right: 100px;
+}
+
+.office__organization__button{
+    width:80px;
+    height:30px;
+    margin-top: 10px;
+    background-color: #FFFFFF00;
+    border: 1px solid #7D7D7260;
+    border-radius: 4px;
+    color: #6c6c72;;
+}
+
+.office__organization__button:hover{
+    background-color: #7D7D7260;
+    color: white;
+    border : none;
+    transition-duration: 0.25s;
+    cursor: pointer;
+}

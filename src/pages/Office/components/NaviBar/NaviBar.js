@@ -1,11 +1,12 @@
 import style from "./NaviBar.module.css";
 import NaviBox from "../../../../components/NaviBox/NaviBox";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { MenuContext } from "../../Office";
 
 const NaviBar = () => {
-  const [selectedMenu, setSelectedMenu] = useState("office");
-
+  //const [selectedMenu, setSelectedMenu] = useState("office");
+  const { selectedMenu, setSelectedMenu } = useContext(MenuContext);
   return (
     <div className={style.naviBar}>
       <Link to="/office">

@@ -11,7 +11,6 @@ const NaviBox = ({
   viewBox,
   d,
   title,
-  isExist,
   to,
   setSelectedMenu,
   isSelected,

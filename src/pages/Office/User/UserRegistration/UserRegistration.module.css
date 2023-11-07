@@ -1,0 +1,100 @@
+.container {
+  padding: 20px 24px;
+  width: 100%;
+}
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.userInfo > div {
+  display: flex;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.redDot {
+  color: #d5620a;
+}
+.memo {
+  color: #b5b5bb;
+  font-size: 12px;
+}
+
+.info__title {
+  width: 150px;
+}
+
+input {
+  padding: 6px 10px;
+  border: 1px solid #7d7d7d40;
+}
+
+.organizationBtn {
+  border: none;
+  background-color: white;
+  color: #20412e;
+  margin: 0 20px 20px 0;
+}
+
+/* 셀렉터 */
+.selectionValue {
+  padding: 5px 10px;
+  border: 1px solid #7d7d7d40;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  width: 207px;
+  font-size: 14px;
+}
+.select__option {
+  border: 1px solid #7d7d7d40;
+  background-color: white;
+  /* 최상단 위치 */
+  z-index: 999;
+  /* 중앙 배치 */
+  position: absolute;
+  /* top: 137px;
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+  /* transform: translateX(-50%); */
+  left: 150px;
+  top: 36px;
+  width: 207px;
+  max-height: 260px;
+  overflow: auto;
+  font-size: 14px;
+}
+.select__option::-webkit-scrollbar {
+  width: 20px;
+}
+.select__option::-webkit-scrollbar-thumb {
+  background-color: #7d7d7d20;
+  border-radius: 10px;
+
+  border: 7px solid #ffffff; /* 스크롤을 적용할 영역 색깔과 border 색상을 똑같이 맞춘다 */
+}
+.select__option::-webkit-scrollbar-track {
+  background-color: #ffffff; /* 스크롤바 뒷 배경을 투명 처리한다 */
+}
+
+.option__item {
+  padding: 10px;
+}
+.option__item:hover {
+  background-color: #f3f7f1;
+}
+.insertBtns {
+  margin-top: 50px;
+}
+.insertBtns > button:last-child {
+  margin-left: 15px;
+}
+.isFormat {
+  color: #d5620a;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
