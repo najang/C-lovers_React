@@ -76,7 +76,21 @@
   /* transform: translate(-50%, -50%); */
   transform: translateX(-50%);
   width: calc(100% - 60px);
+  height: 260px;
+  overflow: auto;
   font-size: 14px;
+}
+.select__option::-webkit-scrollbar {
+  width: 20px;
+}
+.select__option::-webkit-scrollbar-thumb {
+  background-color: #7d7d7d20;
+  border-radius: 10px;
+
+  border: 7px solid #ffffff; /* 스크롤을 적용할 영역 색깔과 border 색상을 똑같이 맞춘다 */
+}
+.select__option::-webkit-scrollbar-track {
+  background-color: #ffffff; /* 스크롤바 뒷 배경을 투명 처리한다 */
 }
 .option__item {
   padding: 10px;

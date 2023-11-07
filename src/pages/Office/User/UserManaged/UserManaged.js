@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import WhiteBtn from "../../../../components/WhiteBtn/WhiteBtn";
 import style from "./UserManaged.module.css";
 import DeleteModal from "../components/DeleteModal/DeleteModal";
-import OrganizationModal from "../components/OrganizationModal/OrganizationModal";
+import DeptTaskModal from "../components/DeptTaskModal/DeptTaskModal";
 import JobModal from "../components/JobModal/JobModal";
 import { MenuContext } from "../../Office";
 import { Link } from "react-router-dom";
@@ -70,12 +70,12 @@ const UserManaged = () => {
   };
 
   // 소속조직 모달창 기능
-  const [organizationModalOpen, setOrganizationModalOpen] = useState(false);
-  const showOrganizationModalOpen = () => {
+  const [deptTaskModalOpen, setDeptTaskModalOpen] = useState(false);
+  const showDeptTaskModalOpen = () => {
     if (numChecked > 0) {
-      setOrganizationModalOpen(true);
+      setDeptTaskModalOpen(true);
     } else {
-      setOrganizationModalOpen(false);
+      setDeptTaskModalOpen(false);
     }
   };
 
@@ -117,11 +117,12 @@ const UserManaged = () => {
             checkItems={checkItems}
           ></JobModal>
         )}
-        <button onClick={showOrganizationModalOpen}>소속조직 수정</button>
-        {organizationModalOpen && (
-          <OrganizationModal
-            setOrganizationModalOpen={setOrganizationModalOpen}
-          ></OrganizationModal>
+        <button onClick={showDeptTaskModalOpen}>소속조직 수정</button>
+        {deptTaskModalOpen && (
+          <DeptTaskModal
+            setDeptTaskModalOpen={setDeptTaskModalOpen}
+            checkItems={checkItems}
+          ></DeptTaskModal>
         )}
       </div>
       <div className={style.userTable}>
@@ -139,7 +140,7 @@ const UserManaged = () => {
           </div>
           <div className={style.name}>이름</div>
           <div className={style.userId}>아이디</div>
-          <div className={style.organization}>직위</div>
+          <div className={style.deptTask}>직위</div>
           <div className={style.job}>소속 조직</div>
         </div>
 
@@ -168,7 +169,7 @@ const UserManaged = () => {
                   {item.id}
                 </div>
 
-                <div className={style.organization} id={item.id}>
+                <div className={style.deptTask} id={item.id}>
                   {item.job_name}
                 </div>
                 <div className={style.job} id={item.id}>
