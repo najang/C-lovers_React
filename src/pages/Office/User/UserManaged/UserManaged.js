@@ -2,16 +2,15 @@ import { useContext, useEffect, useState } from "react";
 import WhiteBtn from "../../../../components/WhiteBtn/WhiteBtn";
 import style from "./UserManaged.module.css";
 import DeleteModal from "../components/DeleteModal/DeleteModal";
-import WorkTypeModal from "../components/WorkTypeModal/WorkTypeModal";
 import OrganizationModal from "../components/OrganizationModal/OrganizationModal";
-import PositionModal from "../components/PositionModal/PositionModal";
+import JobModal from "../components/JobModal/JobModal";
 import { MenuContext } from "../../Office";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 const UserManaged = () => {
   const { setSelectedMenu } = useContext(MenuContext);
-  // 직원 총 인원수 불러오기
+  // 직원 총 인원수
   const [userCount, setUserCount] = useState(0);
   // 직원 리스트 불러오기
   const [userList, setUserList] = useState([{}]);
@@ -81,12 +80,12 @@ const UserManaged = () => {
   };
 
   // 직위 수정 모달창 기능
-  const [positionModalOpen, setPositionModalOpen] = useState(false);
-  const showPositionModalOpen = () => {
+  const [jobModalOpen, setJobModalOpen] = useState(false);
+  const showJobModalOpen = () => {
     if (numChecked > 0) {
-      setPositionModalOpen(true);
+      setJobModalOpen(true);
     } else {
-      setPositionModalOpen(false);
+      setJobModalOpen(false);
     }
   };
 
@@ -111,17 +110,18 @@ const UserManaged = () => {
             checkItems={checkItems}
           ></DeleteModal>
         )}
+        <button onClick={showJobModalOpen}>직위 수정</button>
+        {jobModalOpen && (
+          <JobModal
+            setJobModalOpen={setJobModalOpen}
+            checkItems={checkItems}
+          ></JobModal>
+        )}
         <button onClick={showOrganizationModalOpen}>소속조직 수정</button>
         {organizationModalOpen && (
           <OrganizationModal
             setOrganizationModalOpen={setOrganizationModalOpen}
           ></OrganizationModal>
-        )}
-        <button onClick={showPositionModalOpen}>직위 수정</button>
-        {positionModalOpen && (
-          <PositionModal
-            setPositionModalOpen={setPositionModalOpen}
-          ></PositionModal>
         )}
       </div>
       <div className={style.userTable}>
@@ -139,8 +139,8 @@ const UserManaged = () => {
           </div>
           <div className={style.name}>이름</div>
           <div className={style.userId}>아이디</div>
-          <div className={style.organization}>소속 조직</div>
-          <div className={style.position}>직위</div>
+          <div className={style.organization}>직위</div>
+          <div className={style.job}>소속 조직</div>
         </div>
 
         {userList.length > 0 ? (
@@ -171,7 +171,7 @@ const UserManaged = () => {
                 <div className={style.organization} id={item.id}>
                   {item.job_name}
                 </div>
-                <div className={style.position} id={item.id}>
+                <div className={style.job} id={item.id}>
                   {item.task_name}
                 </div>
               </div>
