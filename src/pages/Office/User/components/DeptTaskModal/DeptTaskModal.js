@@ -1,4 +1,4 @@
-import style from "./JobModal.module.css";
+import style from "./DeptTaskModal.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faXmark,
@@ -10,10 +10,10 @@ import GrayBtn from "../../../../../components/GrayBtn/GrayBtn";
 import GreenBtn from "../../../../../components/GreenBtn/GreenBtn";
 import axios from "axios";
 
-const JobModal = ({ setJobModalOpen, checkItems }) => {
+const DeptTaskModal = ({ setDeptTaskModalOpen, checkItems }) => {
   // 모달창 닫기
   const closeModal = () => {
-    setJobModalOpen(false);
+    setDeptTaskModalOpen(false);
   };
 
   // 모달창 외부 클릭시 창 닫기
@@ -26,52 +26,47 @@ const JobModal = ({ setJobModalOpen, checkItems }) => {
 
   // 수정할 유저 ID 등록
   const [modifyUserList, setModifyUserList] = useState([
-    { id: "", job_id: "" },
+    { id: "", dept_task_id: "" },
   ]);
   useEffect(() => {
     setModifyUserList([]);
     checkItems.map((item) => {
-      setModifyUserList((prev) => [...prev, { id: item, job_id: "" }]);
+      setModifyUserList((prev) => [...prev, { id: item, dept_task_id: "" }]);
     });
     console.log(modifyUserList);
   }, []);
 
-  // //select box 커스텀
-
-  const [job, setJob] = useState([{}]);
-  const [jobItem, setJobItem] = useState({});
-  const [showJob, setShowJob] = useState(false);
+  //select box 커스텀
+  const [deptTask, setDeptTask] = useState([[]]);
+  const [deptTaskItem, setDeptTaskItem] = useState({});
+  const [showDeptTask, setShowDeptTask] = useState(false);
   useEffect(() => {
-    axios.get("/office/job").then((resp) => {
-      setJob(resp.data);
-      setJobItem(resp.data[0]);
+    axios.get("/office/detpTask").then((resp) => {
+      setDeptTask(resp.data);
+      setDeptTaskItem(resp.data[0]);
       console.log(resp.data);
       //setUserInfo((prev) => ({ ...prev, job_id: resp.data[0].id }));
     });
   }, []);
 
-  // 선택한 직위 등록
-  const handlerSelectJob = (job) => {
-    setJobItem(job);
-    setShowJob(false);
+  // 선택한 소속 조직 등록
+  const handlerSelectDeptTask = (deptTask) => {
+    setDeptTaskItem(deptTask);
+    setShowDeptTask(false);
     console.log(modifyUserList);
-
     setModifyUserList(
       modifyUserList.map((item, index) => {
-        return { ...item, job_id: job.id };
+        return { ...item, dept_task_id: deptTask.id };
       })
     );
-
-    console.log(modifyUserList);
-    // setUserInfo((prev) => ({ ...prev, job_id: job.id }));
   };
 
-  // 사용자 직위 수정
+  // 사용자 소속 조직 수정
   const handleModifyUser = () => {
     console.log("저장 누름");
     console.log(modifyUserList);
     axios
-      .post("/office/updateUserJob", modifyUserList)
+      .post("/office/updateUserDeptTask", modifyUserList)
       .then((resp) => {
         alert("직위 수정이 완료되었습니다.");
         closeModal();
@@ -91,7 +86,7 @@ const JobModal = ({ setJobModalOpen, checkItems }) => {
     >
       <div className={style.modalBox}>
         <div className={style.modalBox__title}>
-          <div className="title__title">직위 수정</div>
+          <div className="title__title">소속조직 수정</div>
           <div className={style.close} onClick={closeModal}>
             <FontAwesomeIcon icon={faXmark} />
           </div>
@@ -99,34 +94,32 @@ const JobModal = ({ setJobModalOpen, checkItems }) => {
         <div className={style.modal__body}>
           <div
             className={style.selectionValue}
-            onClick={() => {
-              setShowJob(!showJob);
-            }}
+            onClick={() => setShowDeptTask(!showDeptTask)}
           >
-            <div>{jobItem.job_name}</div>
+            <div>{deptTaskItem.task_name}</div>
             <div>
-              {showJob ? (
+              {showDeptTask ? (
                 <FontAwesomeIcon icon={faAngleDown} />
               ) : (
                 <FontAwesomeIcon icon={faAngleUp} />
               )}
             </div>
           </div>
-          {showJob && (
+          {showDeptTask && (
             <div
               className={style.select__option}
               ref={backgroundRef}
               onClick={handlerClickBackground}
             >
-              {job.map((item, index) => (
+              {deptTask.map((item, index) => (
                 <div
                   className={`${style.option__item} ${
-                    item === jobItem ? "select" : ""
+                    item === deptTaskItem ? "select" : ""
                   }`}
-                  onClick={() => handlerSelectJob(item)}
+                  onClick={() => handlerSelectDeptTask(item)}
                   key={index}
                 >
-                  {item.job_name}
+                  {item.task_name}
                 </div>
               ))}
             </div>
@@ -145,4 +138,4 @@ const JobModal = ({ setJobModalOpen, checkItems }) => {
   );
 };
 
-export default JobModal;
+export default DeptTaskModal;
