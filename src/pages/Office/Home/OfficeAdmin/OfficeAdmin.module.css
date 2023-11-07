@@ -1,0 +1,52 @@
+.office__admin__div{
+    margin:20px;
+    border: 1px solid #6c6c7250;
+    border-radius: 4px;
+}
+
+.office__admin__title{
+    font-size: 20px;
+    font-weight : 700;
+}
+
+.office__admin__updiv{
+    padding:20px;
+}
+
+.office__admin__downdiv{
+    overflow-y: hidden;
+    border: 1px solid #6c6c7250;
+    
+}
+
+.office__admin__nav{
+    float:left;
+    width:16%;
+    height:100%;
+}
+
+.office__admin__nav__div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:45px;
+}
+
+.office__admin__nav__div__selected{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:45px;
+    background-color: #DCEDD4;
+}
+
+
+.office__admin__nav__div:hover{
+    cursor: pointer;
+}
+
+.office__admin__maindiv{
+    float:right;
+    width:84%;
+    height:100%;
+}

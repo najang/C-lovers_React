@@ -3,11 +3,9 @@ import NaviBar from "./components/NaviBar/NaviBar";
 import style from "./Office.module.css";
 import { Routes, Route } from "react-router-dom";
 import User from "./User/User";
+import OfficeHome from "./Home/OfficeHome";
 import { createContext, useState } from "react";
 
-const Page0 = () => {
-  return <div>Page0</div>;
-};
 
 const Page1 = () => {
   return <div>Page1</div>;
@@ -30,7 +28,7 @@ const Office = () => {
           <NaviBar></NaviBar>
           <div className={style.body__main}>
             <Routes>
-              <Route path="/" element={<Page0 />}></Route>
+              <Route path="/" element={<OfficeHome />}></Route>
               <Route path="/administrator" element={<Page1 />}></Route>
               <Route path="/organization" element={<Page2 />}></Route>
               <Route path="/user/*" element={<User />}></Route>

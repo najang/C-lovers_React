@@ -1,11 +1,15 @@
 import { Routes, Route } from "react-router-dom";
-import AdminSetting from "./AdminSetting/AdminSetting";
+import OfficeInfo from "./OfficeInfo/OfficeInfo";
+import OfficeAdmin from "./OfficeAdmin/OfficeAdmin";
+import "./OfficeHome.module.css"
 
 const OfficeHome = () => {
 
     return(
-        <AdminSetting></AdminSetting>
-        
+        <div>
+            <OfficeInfo></OfficeInfo>
+            <OfficeAdmin></OfficeAdmin>
+        </div>
     );
 };
 
