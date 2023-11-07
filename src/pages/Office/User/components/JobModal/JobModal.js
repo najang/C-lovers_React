@@ -10,7 +10,7 @@ import GrayBtn from "../../../../../components/GrayBtn/GrayBtn";
 import GreenBtn from "../../../../../components/GreenBtn/GreenBtn";
 import axios from "axios";
 
-const JobModal = ({ setJobModalOpen, checkItems }) => {
+const JobModal = ({ setJobModalOpen, checkItems, setJobModify }) => {
   // 모달창 닫기
   const closeModal = () => {
     setJobModalOpen(false);
@@ -75,7 +75,7 @@ const JobModal = ({ setJobModalOpen, checkItems }) => {
       .then((resp) => {
         alert("직위 수정이 완료되었습니다.");
         closeModal();
-        window.location.replace("/admin/office/user");
+        setJobModify(false);
       })
       .catch((e) => {
         alert(

@@ -1,7 +1,7 @@
 import style from "./NaviBar.module.css";
 import NaviBox from "../../../../components/NaviBox/NaviBox";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { MenuContext } from "../../Office";
 
 const NaviBar = () => {

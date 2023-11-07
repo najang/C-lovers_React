@@ -7,6 +7,17 @@ import JobModal from "../components/JobModal/JobModal";
 import { MenuContext } from "../../Office";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMagnifyingGlass,
+  faAngleLeft,
+  faAnglesLeft,
+  faAngleRight,
+  faAnglesRight,
+} from "@fortawesome/free-solid-svg-icons";
+import Pagination from "react-js-pagination";
+import "../../../../components/Pagination/paginationi.css";
+// import "../../../../components/Pagination/pagination.css";
 
 const UserManaged = () => {
   const { setSelectedMenu } = useContext(MenuContext);
@@ -45,7 +56,7 @@ const UserManaged = () => {
   // 최 상위 체크박스를 클릭했을 때 모든 체크박스를 누르거나, 제거하는 기능
   const allCheckedHandler = (e) => {
     if (e.target.checked) {
-      setCheckItems(userList.map((item) => item.id));
+      setCheckItems(currentUsers.map((item) => item.id));
     } else {
       setCheckItems([]);
     }
@@ -61,6 +72,7 @@ const UserManaged = () => {
   // 삭제 모달창 기능
   // 모달창 노출 여부
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [deleteModify, setDeleteModify] = useState(false);
   const showDeleteModal = () => {
     if (numChecked > 0) {
       setDeleteModalOpen(true);
@@ -71,6 +83,7 @@ const UserManaged = () => {
 
   // 소속조직 모달창 기능
   const [deptTaskModalOpen, setDeptTaskModalOpen] = useState(false);
+  const [deptTaskModify, setDeptTaskModify] = useState(false);
   const showDeptTaskModalOpen = () => {
     if (numChecked > 0) {
       setDeptTaskModalOpen(true);
@@ -81,6 +94,7 @@ const UserManaged = () => {
 
   // 직위 수정 모달창 기능
   const [jobModalOpen, setJobModalOpen] = useState(false);
+  const [jobModify, setJobModify] = useState(false);
   const showJobModalOpen = () => {
     if (numChecked > 0) {
       setJobModalOpen(true);
@@ -88,6 +102,60 @@ const UserManaged = () => {
       setJobModalOpen(false);
     }
   };
+
+  // 삭제 후 리스트 다시 불러오기
+  useEffect(() => {
+    if (deleteModify || deptTaskModify || jobModify) {
+      console.log("삭제되고 나옴");
+      axios.get("/office/userList").then((resp) => {
+        // 리스트 세팅
+        setUserCount(resp.data.length);
+        setUserList(resp.data);
+        // 수정여부 초기화
+        setDeleteModify(false);
+        setDeptTaskModify(false);
+        setJobModify(false);
+        //체크박스 풀기
+        setCheckItems([]);
+      });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }
+  }, [deleteModify, deptTaskModify, jobModify]);
+
+  // 검색 박스 클릭 시 이벤트
+  const [isSearchClick, setSearchClick] = useState(false);
+  const borderStyle = {
+    border: isSearchClick ? "1px solid #20412E" : "1px solid #7d7d7d40",
+    borderRadius: "4px",
+  };
+
+  // 검색 시 결과 받아오기
+  const searchHandler = (e) => {
+    axios
+      .get("/office/searchUser", { params: { keyword: e.target.value } })
+      .then((resp) => {
+        console.log(resp.data);
+        setUserList(resp.data);
+      });
+  };
+
+  // 페이지 네이션
+  const [currentUsers, setCurrentUsers] = useState(userList);
+  const [page, setPage] = useState(1);
+  const userPerPage = 10; // 페이지 당 유저 출력 수
+  const indexOfLastPage = page * userPerPage;
+  const indexOfFirstPage = indexOfLastPage - userPerPage;
+
+  const handlePageChange = (page) => {
+    setPage(page);
+  };
+
+  useEffect(() => {
+    setCurrentUsers(userList.slice(indexOfFirstPage, indexOfLastPage));
+    setCheckItems([]);
+    console.log("qusghk");
+    console.log(userList.length);
+  }, [userList, page]);
 
   return (
     <div className={style.user__container}>
@@ -101,30 +169,51 @@ const UserManaged = () => {
           </Link>
         </div>
       </div>
-      <div className={style.userMenu}>
-        <div className={style.userMenu__select}>{numChecked}</div>
-        <button onClick={showDeleteModal}>삭제</button>
-        {deleteModalOpen && (
-          <DeleteModal
-            setDeleteModalOpen={setDeleteModalOpen}
-            checkItems={checkItems}
-          ></DeleteModal>
-        )}
-        <button onClick={showJobModalOpen}>직위 수정</button>
-        {jobModalOpen && (
-          <JobModal
-            setJobModalOpen={setJobModalOpen}
-            checkItems={checkItems}
-          ></JobModal>
-        )}
-        <button onClick={showDeptTaskModalOpen}>소속조직 수정</button>
-        {deptTaskModalOpen && (
-          <DeptTaskModal
-            setDeptTaskModalOpen={setDeptTaskModalOpen}
-            checkItems={checkItems}
-          ></DeptTaskModal>
-        )}
+      <div className={style.userManagedMenu}>
+        <div className={style.userMenu}>
+          <div className={style.userMenu__select}>{numChecked}</div>
+          <button onClick={showDeleteModal}>삭제</button>
+          {deleteModalOpen && (
+            <DeleteModal
+              setDeleteModalOpen={setDeleteModalOpen}
+              checkItems={checkItems}
+              setDeleteModify={setDeleteModify}
+            ></DeleteModal>
+          )}
+          <button onClick={showJobModalOpen}>직위 수정</button>
+          {jobModalOpen && (
+            <JobModal
+              setJobModalOpen={setJobModalOpen}
+              checkItems={checkItems}
+              setJobModify={setJobModify}
+            ></JobModal>
+          )}
+          <button onClick={showDeptTaskModalOpen}>소속조직 수정</button>
+          {deptTaskModalOpen && (
+            <DeptTaskModal
+              setDeptTaskModalOpen={setDeptTaskModalOpen}
+              checkItems={checkItems}
+              setDeptTaskModify={setDeptTaskModify}
+            ></DeptTaskModal>
+          )}
+        </div>
+        <div
+          className={style.search}
+          style={borderStyle}
+          onFocus={() => setSearchClick(true)}
+          onBlur={() => setSearchClick(false)}
+        >
+          <div className={style.search__prefix}>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </div>
+          <input
+            type="text"
+            placeholder="이름, ID 검색"
+            onChange={searchHandler}
+          />
+        </div>
       </div>
+
       <div className={style.userTable}>
         <div className={style.userTable__header}>
           <div className={style.selector}>
@@ -134,7 +223,8 @@ const UserManaged = () => {
               id=""
               onChange={allCheckedHandler}
               checked={
-                userList.length !== 0 && checkItems.length === userList.length
+                userList.length !== 0 &&
+                checkItems.length === currentUsers.length
               }
             />
           </div>
@@ -146,7 +236,7 @@ const UserManaged = () => {
 
         {userList.length > 0 ? (
           <div className={style.userTable__body}>
-            {userList.map((item, index) => (
+            {currentUsers.map((item, index) => (
               <div
                 className={style.body__userInfo}
                 key={index}
@@ -182,6 +272,17 @@ const UserManaged = () => {
           <div className={style.listZero}>등록된 사용자가 없습니다.</div>
         )}
       </div>
+      <Pagination
+        activePage={page}
+        itemsCountPerPage={userPerPage}
+        totalItemsCount={userList.length}
+        pageRangeDisplayed={5}
+        prevPageText={<FontAwesomeIcon icon={faAngleLeft} />}
+        nextPageText={<FontAwesomeIcon icon={faAngleRight} />}
+        lastPageText={<FontAwesomeIcon icon={faAnglesRight} />}
+        firstPageText={<FontAwesomeIcon icon={faAnglesLeft} />}
+        onChange={handlePageChange}
+      ></Pagination>
     </div>
   );
 };
