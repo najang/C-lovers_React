@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useEffect, useState } from "react";
 import WhiteBtn from "../../../../components/WhiteBtn/WhiteBtn";
 import style from "./UserManaged.module.css";
 import DeleteModal from "../components/DeleteModal/DeleteModal";
@@ -8,7 +8,16 @@ import { MenuContext } from "../../Office";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMagnifyingGlass,
+  faAngleLeft,
+  faAnglesLeft,
+  faAngleRight,
+  faAnglesRight,
+} from "@fortawesome/free-solid-svg-icons";
+import Pagination from "react-js-pagination";
+import "../../../../components/Pagination/paginationi.css";
+// import "../../../../components/Pagination/pagination.css";
 
 const UserManaged = () => {
   const { setSelectedMenu } = useContext(MenuContext);
@@ -47,7 +56,7 @@ const UserManaged = () => {
   // 최 상위 체크박스를 클릭했을 때 모든 체크박스를 누르거나, 제거하는 기능
   const allCheckedHandler = (e) => {
     if (e.target.checked) {
-      setCheckItems(userList.map((item) => item.id));
+      setCheckItems(currentUsers.map((item) => item.id));
     } else {
       setCheckItems([]);
     }
@@ -130,6 +139,24 @@ const UserManaged = () => {
       });
   };
 
+  // 페이지 네이션
+  const [currentUsers, setCurrentUsers] = useState(userList);
+  const [page, setPage] = useState(1);
+  const userPerPage = 10; // 페이지 당 유저 출력 수
+  const indexOfLastPage = page * userPerPage;
+  const indexOfFirstPage = indexOfLastPage - userPerPage;
+
+  const handlePageChange = (page) => {
+    setPage(page);
+  };
+
+  useEffect(() => {
+    setCurrentUsers(userList.slice(indexOfFirstPage, indexOfLastPage));
+    setCheckItems([]);
+    console.log("qusghk");
+    console.log(userList.length);
+  }, [userList, page]);
+
   return (
     <div className={style.user__container}>
       <div className={style.title}>사용자 관리</div>
@@ -196,7 +223,8 @@ const UserManaged = () => {
               id=""
               onChange={allCheckedHandler}
               checked={
-                userList.length !== 0 && checkItems.length === userList.length
+                userList.length !== 0 &&
+                checkItems.length === currentUsers.length
               }
             />
           </div>
@@ -208,7 +236,7 @@ const UserManaged = () => {
 
         {userList.length > 0 ? (
           <div className={style.userTable__body}>
-            {userList.map((item, index) => (
+            {currentUsers.map((item, index) => (
               <div
                 className={style.body__userInfo}
                 key={index}
@@ -244,6 +272,17 @@ const UserManaged = () => {
           <div className={style.listZero}>등록된 사용자가 없습니다.</div>
         )}
       </div>
+      <Pagination
+        activePage={page}
+        itemsCountPerPage={userPerPage}
+        totalItemsCount={userList.length}
+        pageRangeDisplayed={5}
+        prevPageText={<FontAwesomeIcon icon={faAngleLeft} />}
+        nextPageText={<FontAwesomeIcon icon={faAngleRight} />}
+        lastPageText={<FontAwesomeIcon icon={faAnglesRight} />}
+        firstPageText={<FontAwesomeIcon icon={faAnglesLeft} />}
+        onChange={handlePageChange}
+      ></Pagination>
     </div>
   );
 };
