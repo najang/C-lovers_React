@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import WhiteBtn from "../../../../components/WhiteBtn/WhiteBtn";
 import style from "./UserManaged.module.css";
 import DeleteModal from "../components/DeleteModal/DeleteModal";
@@ -7,6 +7,8 @@ import JobModal from "../components/JobModal/JobModal";
 import { MenuContext } from "../../Office";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const UserManaged = () => {
   const { setSelectedMenu } = useContext(MenuContext);
@@ -61,6 +63,7 @@ const UserManaged = () => {
   // 삭제 모달창 기능
   // 모달창 노출 여부
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [deleteModify, setDeleteModify] = useState(false);
   const showDeleteModal = () => {
     if (numChecked > 0) {
       setDeleteModalOpen(true);
@@ -71,6 +74,7 @@ const UserManaged = () => {
 
   // 소속조직 모달창 기능
   const [deptTaskModalOpen, setDeptTaskModalOpen] = useState(false);
+  const [deptTaskModify, setDeptTaskModify] = useState(false);
   const showDeptTaskModalOpen = () => {
     if (numChecked > 0) {
       setDeptTaskModalOpen(true);
@@ -81,12 +85,49 @@ const UserManaged = () => {
 
   // 직위 수정 모달창 기능
   const [jobModalOpen, setJobModalOpen] = useState(false);
+  const [jobModify, setJobModify] = useState(false);
   const showJobModalOpen = () => {
     if (numChecked > 0) {
       setJobModalOpen(true);
     } else {
       setJobModalOpen(false);
     }
+  };
+
+  // 삭제 후 리스트 다시 불러오기
+  useEffect(() => {
+    if (deleteModify || deptTaskModify || jobModify) {
+      console.log("삭제되고 나옴");
+      axios.get("/office/userList").then((resp) => {
+        // 리스트 세팅
+        setUserCount(resp.data.length);
+        setUserList(resp.data);
+        // 수정여부 초기화
+        setDeleteModify(false);
+        setDeptTaskModify(false);
+        setJobModify(false);
+        //체크박스 풀기
+        setCheckItems([]);
+      });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }
+  }, [deleteModify, deptTaskModify, jobModify]);
+
+  // 검색 박스 클릭 시 이벤트
+  const [isSearchClick, setSearchClick] = useState(false);
+  const borderStyle = {
+    border: isSearchClick ? "1px solid #20412E" : "1px solid #7d7d7d40",
+    borderRadius: "4px",
+  };
+
+  // 검색 시 결과 받아오기
+  const searchHandler = (e) => {
+    axios
+      .get("/office/searchUser", { params: { keyword: e.target.value } })
+      .then((resp) => {
+        console.log(resp.data);
+        setUserList(resp.data);
+      });
   };
 
   return (
@@ -101,30 +142,51 @@ const UserManaged = () => {
           </Link>
         </div>
       </div>
-      <div className={style.userMenu}>
-        <div className={style.userMenu__select}>{numChecked}</div>
-        <button onClick={showDeleteModal}>삭제</button>
-        {deleteModalOpen && (
-          <DeleteModal
-            setDeleteModalOpen={setDeleteModalOpen}
-            checkItems={checkItems}
-          ></DeleteModal>
-        )}
-        <button onClick={showJobModalOpen}>직위 수정</button>
-        {jobModalOpen && (
-          <JobModal
-            setJobModalOpen={setJobModalOpen}
-            checkItems={checkItems}
-          ></JobModal>
-        )}
-        <button onClick={showDeptTaskModalOpen}>소속조직 수정</button>
-        {deptTaskModalOpen && (
-          <DeptTaskModal
-            setDeptTaskModalOpen={setDeptTaskModalOpen}
-            checkItems={checkItems}
-          ></DeptTaskModal>
-        )}
+      <div className={style.userManagedMenu}>
+        <div className={style.userMenu}>
+          <div className={style.userMenu__select}>{numChecked}</div>
+          <button onClick={showDeleteModal}>삭제</button>
+          {deleteModalOpen && (
+            <DeleteModal
+              setDeleteModalOpen={setDeleteModalOpen}
+              checkItems={checkItems}
+              setDeleteModify={setDeleteModify}
+            ></DeleteModal>
+          )}
+          <button onClick={showJobModalOpen}>직위 수정</button>
+          {jobModalOpen && (
+            <JobModal
+              setJobModalOpen={setJobModalOpen}
+              checkItems={checkItems}
+              setJobModify={setJobModify}
+            ></JobModal>
+          )}
+          <button onClick={showDeptTaskModalOpen}>소속조직 수정</button>
+          {deptTaskModalOpen && (
+            <DeptTaskModal
+              setDeptTaskModalOpen={setDeptTaskModalOpen}
+              checkItems={checkItems}
+              setDeptTaskModify={setDeptTaskModify}
+            ></DeptTaskModal>
+          )}
+        </div>
+        <div
+          className={style.search}
+          style={borderStyle}
+          onFocus={() => setSearchClick(true)}
+          onBlur={() => setSearchClick(false)}
+        >
+          <div className={style.search__prefix}>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </div>
+          <input
+            type="text"
+            placeholder="이름, ID 검색"
+            onChange={searchHandler}
+          />
+        </div>
       </div>
+
       <div className={style.userTable}>
         <div className={style.userTable__header}>
           <div className={style.selector}>
