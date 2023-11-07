@@ -4,7 +4,6 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import GrayBtn from "../../../../../components/GrayBtn/GrayBtn";
 import GreenBtn from "../../../../../components/GreenBtn/GreenBtn";
 import { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const DeleteModal = ({ setDeleteModalOpen, checkItems }) => {
@@ -70,7 +69,6 @@ const DeleteModal = ({ setDeleteModalOpen, checkItems }) => {
   };
 
   // 사용자 삭제 함수
-  const navi = useNavigate();
   const userdeleteHandler = () => {
     console.log("삭제");
     axios

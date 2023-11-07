@@ -49,23 +49,23 @@ const UserRegistration = () => {
   });
 
   //select box 커스텀
-  const [position, setPosition] = useState([{}]);
-  const [positionItem, setPositionItem] = useState({});
+  const [job, setJob] = useState([{}]);
+  const [jobItem, setJobItem] = useState({});
   useEffect(() => {
-    axios.get("/office/position").then((resp) => {
-      setPosition(resp.data);
-      setPositionItem(resp.data[0]);
+    axios.get("/office/job").then((resp) => {
+      setJob(resp.data);
+      setJobItem(resp.data[0]);
       console.log(resp.data);
       setUserInfo((prev) => ({ ...prev, job_id: resp.data[0].id }));
     });
   }, []);
 
-  const [showPosition, setShowPosition] = useState(false);
+  const [showJob, setShowJob] = useState(false);
 
-  const handlerSelectPosition = (position) => {
-    setPositionItem(position);
-    setShowPosition(false);
-    setUserInfo((prev) => ({ ...prev, job_id: position.id }));
+  const handlerSelectJob = (job) => {
+    setJobItem(job);
+    setShowJob(false);
+    setUserInfo((prev) => ({ ...prev, job_id: job.id }));
   };
 
   //select box 커스텀
@@ -96,7 +96,7 @@ const UserRegistration = () => {
       !e.target.className.includes("UserRegistration_selectionValue") &&
       !e.target.className.includes("UserRegistration_option__item")
     ) {
-      setShowPosition(false);
+      setShowJob(false);
       setShowDepartment(false);
     }
     console.log("test");
@@ -182,36 +182,36 @@ const UserRegistration = () => {
             <input type="date" name="hire_date" onChange={handleChange} />
           </div>
         </div>
-        <div className="info__jobPosition">
+        <div className="info__jobJob">
           <div className={style.info__title}>직위</div>
           <div
             className={style.selectionValue}
             onClick={() => {
-              setShowPosition(!showPosition);
+              setShowJob(!showJob);
               setShowDepartment(false);
             }}
           >
-            <div>{positionItem.job_name}</div>
+            <div>{jobItem.job_name}</div>
             <div>
-              {showPosition ? (
+              {showJob ? (
                 <FontAwesomeIcon icon={faAngleDown} />
               ) : (
                 <FontAwesomeIcon icon={faAngleUp} />
               )}
             </div>
           </div>
-          {showPosition && (
+          {showJob && (
             <div
               className={style.select__option}
               ref={backgroundRef}
               onClick={handlerClickBackground}
             >
-              {position.map((item, index) => (
+              {job.map((item, index) => (
                 <div
                   className={`${style.option__item} ${
-                    item === positionItem ? "select" : ""
+                    item === jobItem ? "select" : ""
                   }`}
-                  onClick={() => handlerSelectPosition(item)}
+                  onClick={() => handlerSelectJob(item)}
                   key={index}
                 >
                   {item.job_name}
@@ -226,7 +226,7 @@ const UserRegistration = () => {
             className={style.selectionValue}
             onClick={() => {
               setShowDepartment(!showDepartment);
-              setShowPosition(false);
+              setShowJob(false);
             }}
           >
             <div>{departmentItem.task_name}</div>
