@@ -6,14 +6,21 @@ import Office from "./pages/Office/Office";
 import Main from "./pages/Main/Main";
 
 export const SubMenuContext = createContext();
+export const ProfileCardContext = createContext();
+
 function App() {
   const [naviModalOpen, setNaviModalOpen] = useState(false);
+  const [profileCardOpen, setProfileCardOpen] = useState(false);
   // 모달창 닫기
-  const closeModal = () => {
+  const closeNaviModal = () => {
     setNaviModalOpen(false);
   };
 
-  // 모달창 외부 클릭시 창 닫기
+  const closeProfileModal = () => {
+    setProfileCardOpen(false);
+  };
+
+  // 서브 네비 모달창 외부 클릭시 창 닫기
 
   const handlerClickBackground = (e) => {
     if (e.target.tagName !== "DIV") {
@@ -24,21 +31,28 @@ function App() {
             "Header_headerLeft__dropNav"
           )
         ) {
-          closeModal();
+          closeNaviModal();
         } else if (e.target.tagName === "path") {
           if (
             !e.target.parentElement.parentElement.className.includes(
               "Header_headerLeft__dropNav"
             )
           ) {
-            closeModal();
+            closeNaviModal();
           }
         }
       }
     } else {
+      console.log(e.target.className);
       if (!e.target.className.includes("Header_headerLeft__dropNav")) {
         console.log("같지 않음");
-        closeModal();
+        console.log(e.target.className);
+        closeNaviModal();
+      }
+
+      if (!e.target.className.includes("profile")) {
+        console.log("여기");
+        closeProfileModal();
       }
     }
   };
@@ -47,12 +61,16 @@ function App() {
     <SubMenuContext.Provider
       value={{ naviModalOpen, setNaviModalOpen, handlerClickBackground }}
     >
-      <Router basename="/admin">
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/office/*" element={<Office />}></Route>
-        </Routes>
-      </Router>
+      <ProfileCardContext.Provider
+        value={{ profileCardOpen, setProfileCardOpen, handlerClickBackground }}
+      >
+        <Router basename="/admin">
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/office/*" element={<Office />}></Route>
+          </Routes>
+        </Router>
+      </ProfileCardContext.Provider>
     </SubMenuContext.Provider>
   );
 }

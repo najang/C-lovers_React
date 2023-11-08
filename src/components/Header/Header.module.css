@@ -34,19 +34,23 @@
   margin-left: 5px;
 }
 
-.headerRight * {
+.headerRight__box {
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
   font-size: 25px;
+}
+
+.headerRight__box path {
   color: #b5b5bb;
 }
-.headerRight div:not(:first-child) {
+.headerRight__box:not(:first-child) {
   margin-left: 18px;
 }
 .profileImg {
   width: 35px;
   height: 35px;
   border-radius: 50%;
+  pointer-events: none;
 }
