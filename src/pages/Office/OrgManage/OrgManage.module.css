@@ -1,24 +1,34 @@
-
-
-.org__mother__div{
-    padding:20px;
+.org__mother__div {
+    padding: 20px;
 }
 
-.org__title{
+.org__title {
     margin-bottom: 20px;
 }
 
-.org__title__text{
+.org__title__text {
     font-size: 20px;
     font-weight: 700;
 }
 
-/* Block */
+.org__table {
+    min-width: 700px;
+    margin-top: 20px;
+}
+
+.org__level {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.tree__div {
+    padding: 20px;
+}
+
 .tree {
     position: relative;
 }
 
-/* Element */
 .tree__branch {
     position: relative;
     margin-left: 250px;
@@ -57,7 +67,6 @@
     margin-top: 1px;
 }
 
-/* Modifier for first child */
 .tree__entry--first::before {
     width: 10px;
     height: 50%;
@@ -71,7 +80,6 @@
     border-radius: 10px 0 0 0;
 }
 
-/* Modifier for last child */
 .tree__entry--last::before {
     width: 10px;
     height: 50%;
@@ -86,7 +94,6 @@
     margin-top: -9px;
 }
 
-/* Modifier for sole entry */
 .tree__entry__sole::before {
     display: none;
 }
@@ -98,12 +105,14 @@
     border-radius: 0;
 }
 
-/* Element for label */
+
 .tree__label {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-width: 150px;
-    padding: 5px 10px;
     line-height: 20px;
+    padding: 5px 10px;
     text-align: center;
     border: 2px solid black;
     border-radius: 5px;
@@ -111,4 +120,19 @@
     left: 0;
     top: 50%;
     margin-top: -15px;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.tree__label:hover{
+    background-color: #DCEDD4;
+}
+
+.tree__label__element {
+    /* 이 클래스에 대한 스타일 규칙이 없으므로 필요한 스타일을 추가하거나 이를 제거할 수 있습니다 */
+}
+
+.tree__label__info {
+    margin-left: 6px;
+    margin-right: 6px;
 }
