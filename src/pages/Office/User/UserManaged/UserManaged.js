@@ -17,7 +17,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "react-js-pagination";
 import "../../../../components/Pagination/paginationi.css";
-// import "../../../../components/Pagination/pagination.css";
 
 const UserManaged = () => {
   const { setSelectedMenu } = useContext(MenuContext);
@@ -207,7 +206,7 @@ const UserManaged = () => {
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </div>
           <input
-            type="text"
+            type="search"
             placeholder="이름, ID 검색"
             onChange={searchHandler}
           />

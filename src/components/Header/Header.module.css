@@ -27,6 +27,7 @@
 }
 .headerLeft__dropNav:hover {
   background-color: #dcedd4;
+  cursor: pointer;
 }
 
 .dropNav__icon {

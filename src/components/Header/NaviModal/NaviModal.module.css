@@ -1,0 +1,11 @@
+.subnaviBar {
+  position: absolute;
+  left: 110px;
+  top: 50px;
+  background-color: white;
+  border-radius: 4px;
+  padding: 20px;
+}
+.subnaviBar div {
+  display: flex;
+}

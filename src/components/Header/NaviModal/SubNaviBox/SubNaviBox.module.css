@@ -1,0 +1,13 @@
+.naviConp {
+  display: flex;
+  padding: 10px 15px;
+  font-size: 18px;
+  margin: 0 5px 5px 0;
+  width: 150px;
+}
+
+.naviConp__icon {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}

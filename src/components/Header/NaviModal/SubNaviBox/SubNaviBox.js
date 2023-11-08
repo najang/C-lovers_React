@@ -1,11 +1,7 @@
 import { useState } from "react";
-import style from "./NaviBox.module.css";
+import style from "./SubNaviBox.module.css";
 
-// function isCurrent(to) {
-//   return window.location.pathname.endsWith(to);
-// }
-
-const NaviBox = ({
+const SubNaviBox = ({
   xmlns,
   height,
   viewBox,
@@ -15,21 +11,21 @@ const NaviBox = ({
   setSelectedMenu,
   isSelected,
 }) => {
-  const [isHovering, setHovering] = useState(0);
-  const handleClick = (e) => {
+  const [isHovering, setHovering] = useState(false);
+  const clickHandler = () => {
     setSelectedMenu(to);
   };
   const backgroundStlye = {
-    backgroundColor: isSelected || isHovering == 1 ? "#dcedd4" : "#F3F7F1",
+    backgroundColor: isSelected || isHovering ? "#dcedd4" : "#FFFFFF",
   };
 
   return (
     <div
       className={style.naviConp}
-      onClick={handleClick}
+      onClick={clickHandler}
       style={backgroundStlye}
-      onMouseOver={() => setHovering(1)}
-      onMouseOut={() => setHovering(0)}
+      onMouseOver={() => setHovering(true)}
+      onMouseOut={() => setHovering(false)}
     >
       <div className={style.naviConp__icon}>
         <svg xmlns={xmlns} height={height} viewBox={viewBox}>
@@ -40,4 +36,5 @@ const NaviBox = ({
     </div>
   );
 };
-export default NaviBox;
+
+export default SubNaviBox;
