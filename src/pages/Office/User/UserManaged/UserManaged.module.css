@@ -21,6 +21,7 @@
 .userMenu {
   display: flex;
   margin-left: 10px;
+  align-items: center;
 }
 .userMenu__select,
 .userMenu > button {
@@ -113,4 +114,37 @@ input[type="checkbox"] {
   justify-content: center;
   padding: 30px;
   color: #b5b5bb;
+}
+
+.userMenuSmallBtn {
+  display: none;
+}
+@media (max-width: 935px) {
+  .userTable__header > div:not(:first-child) {
+    padding: 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .userTable__body > div > div:not(:first-child) {
+    padding: 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .deleteBtn,
+  .jobModifyBtn,
+  .deptTaskModifyBtn {
+    display: none;
+  }
+  .userMenu > button {
+    margin: 0;
+  }
+  .userMenuSmallBtn {
+    display: block;
+    width: 25px;
+  }
+  .userMenuSmallBtn * {
+    color: #095544;
+  }
 }

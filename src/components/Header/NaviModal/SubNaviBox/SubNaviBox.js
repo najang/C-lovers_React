@@ -16,7 +16,7 @@ const SubNaviBox = ({
     setSelectedMenu(to);
   };
   const backgroundStlye = {
-    backgroundColor: isSelected || isHovering ? "#dcedd4" : "#FFFFFF",
+    backgroundColor: isSelected || isHovering ? "#dcedd4" : "#f3f7f1",
   };
 
   return (

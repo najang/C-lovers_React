@@ -10,9 +10,15 @@ import GrayBtn from "../../../../../components/GrayBtn/GrayBtn";
 import GreenBtn from "../../../../../components/GreenBtn/GreenBtn";
 import axios from "axios";
 
-const JobModal = ({ setJobModalOpen, checkItems, setJobModify }) => {
+const JobModal = ({
+  setJobModalOpen,
+  checkItems,
+  setJobModify,
+  showSmallMenuModalOpen,
+}) => {
   // 모달창 닫기
   const closeModal = () => {
+    showSmallMenuModalOpen(false);
     setJobModalOpen(false);
   };
 
