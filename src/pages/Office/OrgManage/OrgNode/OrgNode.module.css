@@ -6,7 +6,7 @@
     align-items: center;
     min-width: 150px;
     line-height: 20px;
-    padding: 5px 10px;
+    padding: 5px;
     text-align: center;
     border: 2px solid black;
     border-radius: 5px;
@@ -15,20 +15,23 @@
     top: 50%;
     margin-top: -15px;
     transition-duration: 0.3s;
-    cursor: pointer;
+    cursor:default;
 }
 
 .tree__label:hover{
     background-color: #DCEDD4;
 }
 
-.tree__label__element {
-    /* 이 클래스에 대한 스타일 규칙이 없으므로 필요한 스타일을 추가하거나 이를 제거할 수 있습니다 */
-}
 
 .tree__label__info {
-    margin-left: 6px;
-    margin-right: 6px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.contextMenu{
+    background-color: white;
+    border: 1px soild black;
+    border-radius: 4px;
 }
 
 
