@@ -4,6 +4,7 @@ import style from "./UserManaged.module.css";
 import DeleteModal from "../components/DeleteModal/DeleteModal";
 import DeptTaskModal from "../components/DeptTaskModal/DeptTaskModal";
 import JobModal from "../components/JobModal/JobModal";
+import SmallMenuModal from "../components/SmallMenuModal/SmallMenuModal";
 import { MenuContext } from "../../Office";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -14,6 +15,7 @@ import {
   faAnglesLeft,
   faAngleRight,
   faAnglesRight,
+  faEllipsisVertical,
 } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "react-js-pagination";
 import "../../../../components/Pagination/paginationi.css";
@@ -102,6 +104,16 @@ const UserManaged = () => {
     }
   };
 
+  // 작은 메뉴 모달창 기능
+  const [smallMenuModalOpen, setSmallMenuModalOpen] = useState(false);
+  const showSmallMenuModalOpen = () => {
+    if (numChecked > 0) {
+      setSmallMenuModalOpen(!smallMenuModalOpen);
+    } else {
+      setSmallMenuModalOpen(false);
+    }
+  };
+
   // 삭제 후 리스트 다시 불러오기
   useEffect(() => {
     if (deleteModify || deptTaskModify || jobModify) {
@@ -171,29 +183,55 @@ const UserManaged = () => {
       <div className={style.userManagedMenu}>
         <div className={style.userMenu}>
           <div className={style.userMenu__select}>{numChecked}</div>
-          <button onClick={showDeleteModal}>삭제</button>
+          <button onClick={showDeleteModal} className={style.deleteBtn}>
+            삭제
+          </button>
           {deleteModalOpen && (
             <DeleteModal
               setDeleteModalOpen={setDeleteModalOpen}
               checkItems={checkItems}
               setDeleteModify={setDeleteModify}
+              showSmallMenuModalOpen={showSmallMenuModalOpen}
             ></DeleteModal>
           )}
-          <button onClick={showJobModalOpen}>직위 수정</button>
+          <button onClick={showJobModalOpen} className={style.jobModifyBtn}>
+            직위 수정
+          </button>
           {jobModalOpen && (
             <JobModal
               setJobModalOpen={setJobModalOpen}
               checkItems={checkItems}
               setJobModify={setJobModify}
+              showSmallMenuModalOpen={showSmallMenuModalOpen}
             ></JobModal>
           )}
-          <button onClick={showDeptTaskModalOpen}>소속조직 수정</button>
+          <button
+            onClick={showDeptTaskModalOpen}
+            className={style.deptTaskModifyBtn}
+          >
+            소속조직 수정
+          </button>
           {deptTaskModalOpen && (
             <DeptTaskModal
               setDeptTaskModalOpen={setDeptTaskModalOpen}
               checkItems={checkItems}
               setDeptTaskModify={setDeptTaskModify}
+              showSmallMenuModalOpen={showSmallMenuModalOpen}
             ></DeptTaskModal>
+          )}
+          <button
+            className={style.userMenuSmallBtn}
+            onClick={showSmallMenuModalOpen}
+          >
+            <FontAwesomeIcon icon={faEllipsisVertical} />
+          </button>
+          {smallMenuModalOpen && (
+            <SmallMenuModal
+              showDeleteModal={showDeleteModal}
+              showJobModalOpen={showJobModalOpen}
+              showDeptTaskModalOpen={showDeptTaskModalOpen}
+              setSmallMenuModalOpen={setSmallMenuModalOpen}
+            ></SmallMenuModal>
           )}
         </div>
         <div
