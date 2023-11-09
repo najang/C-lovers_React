@@ -56,7 +56,6 @@ const OrgManage = () => {
             .then((resp) => {
                 office = resp.data.dept_name; // 서버로부터 받은 데이터를 콘솔에 출력
             })
-        console.log(office);
         axios.get("/org/office/empCount")
             .then((resp) => {
                 officer = resp.data;
