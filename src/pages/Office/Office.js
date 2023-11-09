@@ -4,6 +4,7 @@ import style from "./Office.module.css";
 import { Routes, Route } from "react-router-dom";
 import User from "./User/User";
 import OfficeHome from "./Home/OfficeHome";
+import OrgManage from "./OrgManage/OrgManage";
 import { createContext, useState, useRef, useEffect, useContext } from "react";
 import { SubMenuContext } from "../../App";
 
@@ -30,7 +31,7 @@ const Office = () => {
             <Routes>
               <Route path="/" element={<OfficeHome />}></Route>
               <Route path="/administrator" element={<Page1 />}></Route>
-              <Route path="/organization" element={<Page2 />}></Route>
+              <Route path="/organization" element={<OrgManage />}></Route>
               <Route path="/user/*" element={<User />}></Route>
               <Route path="/positionduty" element={<Page1 />}></Route>
               <Route path="/inactiveuser" element={<Page2 />}></Route>

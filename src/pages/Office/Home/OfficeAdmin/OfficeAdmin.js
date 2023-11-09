@@ -2,7 +2,7 @@ import officeAdmin from "./OfficeAdmin.module.css";
 import { useState } from "react";
 
 const OfficeAdmin = () => {
-    const [selected, setSelected] = useState("totalManager");
+    const [selected, setSelected] = useState("TOTAL_MANAGER");
 
     const handleSelect = (category) => {
         setSelected(category);
@@ -17,26 +17,26 @@ const OfficeAdmin = () => {
                 <div className={officeAdmin.office__admin__nav}>
                     <ul>
                         <li
-                            onClick={() => handleSelect('totalManager')}
-                            className={selected === 'totalManager' ? officeAdmin.office__admin__nav__div__selected : officeAdmin.office__admin__nav__div}
+                            onClick={() => handleSelect('TOTAL_MANAGER')}
+                            className={selected === 'TOTAL_MANAGER' ? officeAdmin.office__admin__nav__div__selected : officeAdmin.office__admin__nav__div}
                         >
                             전체 관리자 (2)
                         </li>
                         <li
-                            onClick={() => handleSelect('humanResourceManager')}
-                            className={selected === 'humanResourceManager' ? officeAdmin.office__admin__nav__div__selected : officeAdmin.office__admin__nav__div}
+                            onClick={() => handleSelect('HUMAN_RESOURCE_MANAGER')}
+                            className={selected === 'HUMAN_RESOURCE_MANAGER' ? officeAdmin.office__admin__nav__div__selected : officeAdmin.office__admin__nav__div}
                         >
                             인사 관리자 (2)
                         </li>
                         <li
-                            onClick={() => handleSelect('electricApprovalManager')}
-                            className={selected === 'electricApprovalManager' ? officeAdmin.office__admin__nav__div__selected : officeAdmin.office__admin__nav__div}
+                            onClick={() => handleSelect('ELECTRIC_APPROVAL_MANAGER')}
+                            className={selected === 'ELECTRIC_APPROVAL_MANAGER' ? officeAdmin.office__admin__nav__div__selected : officeAdmin.office__admin__nav__div}
                         >
                             전자결제 관리자 (2)
                         </li>
                         <li
-                            onClick={() => handleSelect('reservationManager')}
-                            className={selected === 'reservationManager' ? officeAdmin.office__admin__nav__div__selected : officeAdmin.office__admin__nav__div}
+                            onClick={() => handleSelect('RESERVATION_MANAGER')}
+                            className={selected === 'RESERVATION_MANAGER' ? officeAdmin.office__admin__nav__div__selected : officeAdmin.office__admin__nav__div}
                         >
                             예약 관리자 (2)
                         </li>
