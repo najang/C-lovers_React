@@ -3,44 +3,90 @@ import React, { useContext, useEffect } from 'react';
 import styles from './OrgManage.module.css';
 import { MenuContext } from "../../Office/Office";
 import OrgNode from './OrgNode/OrgNode';
+import axios from 'axios';
 
 
 const OrgBranch = ({ children }) => {
     const childrenArray = React.Children.toArray(children);
     const childrenCount = childrenArray.length;
-    
-    console.log(children)
+
     return (
-      <div className={styles.tree__branch}>
-        {childrenArray.map((child, index) => {
-          const childClassName = `${styles.tree__entry} ${
-            childrenCount === 1
-              ? ''
-              : `${index === 0 ? styles['tree__entry--first'] : ''} ${
-                  index === childrenCount - 1 ? styles['tree__entry--last'] : ''
-                }`
-          }`;
-          
-          // Ensure that the child component can accept className prop
-          const newProps = {
-            ...child.props,
-            className: child.props.className ? `${child.props.className} ${childClassName}` : childClassName,
-          };
-          const result = React.cloneElement(child, newProps);
-          console.log(result);
-          return result;
-        })}
-      </div>
+        <div className={styles.tree__branch}>
+            {childrenArray.map((child, index) => {
+                const isFirst = index === 0;
+                const isLast = index === childrenCount - 1;
+                const childClassName = `${styles.tree__entry} ${isFirst ? styles['tree__entry--first'] : ''} ${isLast ? styles['tree__entry--last'] : ''}`;
+
+                // Ensure that we are not overwriting any existing className
+                const newProps = {
+                    ...child.props,
+                    className: child.props.className
+                        ? `${child.props.className} ${childClassName}`
+                        : childClassName,
+                };
+                return React.cloneElement(child, newProps);
+            })}
+        </div>
     );
-  };
-  
+}
+
 
 const OrgManage = () => {
 
     const { setSelectedMenu } = useContext(MenuContext);
+    // const { orgData, setOrgData } = useState({
+    //     office: "",
+    //     people : 0,
+    //     department: {[
+
+    //     ]
+
+    //     }
+    // })
+
     // 네비바가 user에 고정되도록 설정
     useEffect(() => {
-        return () => setSelectedMenu("organization");
+        let office = ""
+        let officer = 0;
+        let department = Array();
+        let departmentInfo = []
+        let deptTaskInfo = Array();
+
+        axios.get("/org/office")
+            .then((resp) => {
+                office = resp.data.dept_name; // 서버로부터 받은 데이터를 콘솔에 출력
+            })
+        console.log(office);
+        axios.get("/org/office/empCount")
+            .then((resp) => {
+                officer = resp.data;
+            }
+            )
+        
+        axios.get("/org/getDepartment")
+            .then((resp) => {
+                department = resp.data;
+
+                // 모든 부서에 대한 empCount 요청을 생성합니다.
+                const empCountRequests = department.map((dept) => {
+                    return axios.get(`/org/getDepartment/${dept.id}/empCount`);
+                });
+
+                // 모든 요청이 완료될 때까지 기다립니다.
+                return Promise.all(empCountRequests);
+            })
+            .then((empCountResponses) => {
+                // 모든 empCount 요청의 결과를 처리합니다.
+                departmentInfo =  empCountResponses.map((response, index) => {
+                    return { deptOfficer: response.data, ...department[index] };
+                });
+            })
+            .catch((error) => {
+                // 에러 처리
+                console.error("An error occurred:", error);
+            });
+        setSelectedMenu("organization");
+
     }, []);
 
 
@@ -76,10 +122,14 @@ const OrgManage = () => {
                                         <div className={styles.tree__branch}>
                                             <div className={`${styles.tree__entry} ${styles['tree__entry--first']}`}>
                                                 <OrgNode name="관리부" empCount="6"></OrgNode>
-                                                <OrgBranch >
-                                                    <OrgNode name="구매 총무팀" empCount="3" />
-                                                    <OrgNode name="재무 회계팀" empCount="3" />
-                                                </OrgBranch>
+                                                <div className={styles.tree__branch}>
+                                                    <div className={`${styles.tree__entry} ${styles['tree__entry--first']}`}>
+                                                        <OrgNode name="구매 총무팀" empCount="3" />
+                                                    </div>
+                                                    <div className={`${styles.tree__entry} ${styles['tree__entry--last']}`}>
+                                                        <OrgNode name="재무 회계팀" empCount="3" />
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div className={styles.tree__entry}>
                                                 <OrgNode name="생산부" empCount="10"></OrgNode>
