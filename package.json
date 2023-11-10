@@ -18,8 +18,8 @@
     "react-js-pagination": "^3.0.3",
     "react-router-dom": "^6.18.0",
     "react-scripts": "5.0.1",
-    "treeflex": "^2.0.1",
     "react-session-api": "^1.1.0",
+    "treeflex": "^2.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -46,5 +46,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8080"
+  "proxy": "http://localhost"
 }

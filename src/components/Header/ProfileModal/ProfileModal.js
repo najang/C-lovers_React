@@ -6,7 +6,9 @@ import axios from "axios";
 const ProfileModal = ({ userBasicInfo }) => {
   const logoutHandler = () => {
     console.log("로그아웃");
-    axios.get("/members/logout");
+    axios.get("/members/adminLogout").then(() => {
+      window.location.href = "/";
+    });
   };
   return (
     <div className={style.profileCard}>

@@ -1,5 +1,6 @@
 .org__mother__div {
     padding: 20px;
+    overflow-x:auto;
 }
 
 .org__title {
@@ -9,6 +10,10 @@
 .org__title__text {
     font-size: 20px;
     font-weight: 700;
+}
+
+.org__detail{
+    margin-left:20px;
 }
 
 .org__table {
@@ -105,3 +110,8 @@
     border-radius: 0;
 }
 
+.context__menu{
+    z-index: 10;
+    background-color: white;
+    
+}
