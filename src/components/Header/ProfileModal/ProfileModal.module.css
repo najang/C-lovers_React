@@ -8,6 +8,7 @@
   box-shadow: 3px 3px #7d7d7d40;
   padding: 20px;
   width: 360px;
+  z-index: 999;
 }
 .userInfo {
   display: flex;
