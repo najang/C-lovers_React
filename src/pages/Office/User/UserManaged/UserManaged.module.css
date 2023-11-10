@@ -1,7 +1,10 @@
 .user__container {
   padding: 20px 24px;
   width: 100%;
+  height: 100%;
+  min-width: 750px;
 }
+
 .title {
   font-size: 20px;
   font-weight: 700;
@@ -21,6 +24,7 @@
 .userMenu {
   display: flex;
   margin-left: 10px;
+  align-items: center;
 }
 .userMenu__select,
 .userMenu > button {
@@ -43,6 +47,7 @@
 .search {
   display: flex;
   align-items: center;
+  width: 200px;
 }
 .search__prefix {
   margin: 0 10px;
@@ -53,6 +58,7 @@
 .search > input {
   border: none;
   outline: none;
+  width: 80%;
 }
 
 input[type="checkbox"] {
@@ -113,4 +119,37 @@ input[type="checkbox"] {
   justify-content: center;
   padding: 30px;
   color: #b5b5bb;
+}
+
+.userMenuSmallBtn {
+  display: none;
+}
+@media (max-width: 935px) {
+  .userTable__header > div:not(:first-child) {
+    padding: 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .userTable__body > div > div:not(:first-child) {
+    padding: 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .deleteBtn,
+  .jobModifyBtn,
+  .deptTaskModifyBtn {
+    display: none;
+  }
+  .userMenu > button {
+    margin: 0;
+  }
+  .userMenuSmallBtn {
+    display: block;
+    width: 25px;
+  }
+  .userMenuSmallBtn * {
+    color: #095544;
+  }
 }

@@ -14,9 +14,11 @@ const DeptTaskModal = ({
   setDeptTaskModalOpen,
   checkItems,
   setDeptTaskModify,
+  showSmallMenuModalOpen,
 }) => {
   // 모달창 닫기
   const closeModal = () => {
+    showSmallMenuModalOpen(false);
     setDeptTaskModalOpen(false);
   };
 

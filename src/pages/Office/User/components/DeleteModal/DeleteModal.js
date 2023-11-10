@@ -6,9 +6,15 @@ import GreenBtn from "../../../../../components/GreenBtn/GreenBtn";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 
-const DeleteModal = ({ setDeleteModalOpen, checkItems, setDeleteModify }) => {
+const DeleteModal = ({
+  setDeleteModalOpen,
+  checkItems,
+  setDeleteModify,
+  showSmallMenuModalOpen,
+}) => {
   // 모달창 닫기
   const closeModal = () => {
+    showSmallMenuModalOpen(false);
     setDeleteModalOpen(false);
   };
 
