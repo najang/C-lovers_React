@@ -32,6 +32,7 @@ const UserRegistration = () => {
     emp_status_id: "",
     profile_img: "",
     daliy_work_rule_id: "",
+    company_phone: "",
   });
 
   // 이름, 입사일 입력 검사 및 이메일, 휴대전화 입력시 유효성 검사
@@ -127,10 +128,36 @@ const UserRegistration = () => {
     }
   };
 
+  // 사내 전화번호 이미 사용중인 전화번호 인지 검사
+  const [isUseNumber, setUseNumber] = useState(false);
+  const isUsingNumber = (phone) => {
+    const { name, value } = phone.target;
+    setUserInfo((prev) => ({ ...prev, [name]: value }));
+    console.log(value === "");
+    if (value !== "") {
+      console.log("비어있지 않음");
+      axios
+        .get("/office/usingCompanyPhoneCheck", {
+          params: { company_phone: value },
+        })
+        .then((resp) => {
+          console.log(resp);
+          if (resp.data) {
+            setUseNumber(true);
+          } else {
+            setUseNumber(false);
+          }
+        });
+    } else {
+      console.log("비어있음");
+      setUseNumber(false);
+    }
+  };
+
   // 이메일, 전화번호 입력 시 유효성 검사 통과하면 저장 가능
   const [options, setOptions] = useState(true);
   useEffect(() => {
-    if (!eamilFormat || !phoneFormat) {
+    if (!eamilFormat || !phoneFormat || isUseNumber) {
       setOptions(false);
     } else {
       setOptions(true);
@@ -143,6 +170,7 @@ const UserRegistration = () => {
     console.log("저장 누름");
     console.log(userInfo);
     if (required) {
+      console.log(userInfo.hire_date);
       axios
         .post("/office/userInsert", userInfo)
         .then((resp) => {
@@ -256,6 +284,20 @@ const UserRegistration = () => {
                 </div>
               ))}
             </div>
+          )}
+        </div>
+        <div className="info__companyPhone">
+          <div className={style.info__title}>사내 전화</div>
+          <div>
+            <input
+              type="text"
+              placeholder="사내 전화번호 입력"
+              name="company_phone"
+              onChange={isUsingNumber}
+            />
+          </div>
+          {isUseNumber && (
+            <div className={style.isFormat}>이미 사용중인 번호입니다.</div>
           )}
         </div>
         <div className="info__email">
