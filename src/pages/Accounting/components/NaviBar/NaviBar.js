@@ -34,30 +34,6 @@ const NaviBar = () => {
                     isSelected={selectedMenu == "corporation_card"}
                 ></NaviBox>
             </Link>
-            {/* <Link to="accounting_account">
-                <NaviBox
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="1em"
-                    viewBox="0 0 512 512"
-                    d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zm64 0v64h64V96H64zm384 0H192v64H448V96zM64 224v64h64V224H64zm384 0H192v64H448V224zM64 352v64h64V352H64zm384 0H192v64H448V352z"
-                    title="계정 과목"
-                    to="accounting_account"
-                    setSelectedMenu={setSelectedMenu}
-                    isSelected={selectedMenu == "accounting_account"}
-                ></NaviBox>
-            </Link> */}
-            {/* <Link to="accounting_costcenter">
-                <NaviBox
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="1em"
-                    viewBox="0 0 576 512"
-                    d="M64 64C28.7 64 0 92.7 0 128V384c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H64zm64 320H64V320c35.3 0 64 28.7 64 64zM64 192V128h64c0 35.3-28.7 64-64 64zM448 384c0-35.3 28.7-64 64-64v64H448zm64-192c-35.3 0-64-28.7-64-64h64v64zM288 160a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"
-                    title="코스트 센터"
-                    to="accounting_costcenter"
-                    setSelectedMenu={setSelectedMenu}
-                    isSelected={selectedMenu == "accounting_costcenter"}
-                ></NaviBox>
-            </Link> */}
         </div>
     );
 }

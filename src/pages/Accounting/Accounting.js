@@ -9,10 +9,6 @@ import CorporationCard from "./Card/CorporationCard";
 
 export const MenuContext = createContext();
 
-const Page1 = () => {
-    return <div>Page1</div>;
-  };
-
 function Accounting(){
     const [selectedMenu, setSelectedMenu] = useState("accounting");
     const {handlerClickBackground} = useContext(SubMenuContext);

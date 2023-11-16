@@ -19,7 +19,7 @@
   }
 
   .smTitle__inner{
-    width: 100px; height: 40px;
+    width: 130px; height: 40px;
     background-color: white;
     display: flex; align-items: center; justify-content: center;
     margin-left: 20px; margin-top: 10px;
@@ -52,7 +52,7 @@
   .accountAdd{
     border: none;
     background-color: white; color: #095544; font-size: 16px; cursor: pointer;
-    width: 85px; height: 28px;
+    width: 125px; height: 28px;
   }
 
   /* 테이블 */
