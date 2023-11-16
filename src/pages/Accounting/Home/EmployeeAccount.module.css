@@ -34,18 +34,21 @@
     justify-content: space-between;
   }
 /* 검색부분 */
-  .searchIconBox{
-    border: 1px solid #7D7D7D20;
-    border-radius: 5px;
-  }
-  .searchInput{
-    border: none;
+  .search {
+    display: flex;
+    align-items: center;
+    width: 200px;
   }
   .search__prefix {
-    margin: 5px 10px; 
+    margin: 0 10px;
   }
   .search__prefix * {
     color: #b5b5bb;
+  }
+  .search > input {
+    border: none;
+    outline: none;
+    width: 80%;
   }
 
   /* 계좌추가 */
@@ -88,7 +91,11 @@
   .name,.userId,.bankName,.accountNum,.regDate,.DelUp{
     width: 20%;
   }
-
+  .accountNum{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   .accountInfo:hover {
     background-color: #f3f7f1;
   }
@@ -100,4 +107,9 @@
     border: none;
     background-color: white; color: #095544; font-size: 16px; cursor: pointer;
     padding-right: 10px;
+  }
+
+  .listZero{
+    margin: 30px 0px;
+    text-align: center;
   }
