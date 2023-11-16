@@ -87,6 +87,13 @@ const EmployeeAccount = () => {
         }
     }
 
+    // 검색 박스 클릭 시 이벤트
+    const [isSearchClick, setSearchClick] = useState(false);
+    const borderStyle = {
+        border: isSearchClick ? "1px solid #20412E" : "1px solid #7d7d7d40",
+        borderRadius: "4px",
+    };
+
     // 페이지네이션
     const [currentAccountList, setCurrentAccountList] = useState(accountList);
     const [page, setPage] = useState(1);
@@ -94,14 +101,14 @@ const EmployeeAccount = () => {
     const indexOfLastPage = page * accountPerPage;
     const indexOfFirstPage = indexOfLastPage - accountPerPage;
 
-    const handlePageChange = (page) =>{
+    const handlePageChange = (page) => {
         setPage(page);
     }
 
-    useEffect(()=>{
-        setCurrentAccountList(accountList.slice(indexOfFirstPage,indexOfLastPage));
+    useEffect(() => {
+        setCurrentAccountList(accountList.slice(indexOfFirstPage, indexOfLastPage));
         console.log(accountList.length);
-    },[accountList,page]);
+    }, [accountList, page]);
 
     return (
         <div className={style.containerBox}>
@@ -125,15 +132,18 @@ const EmployeeAccount = () => {
                         ></AddModal>
                     )}
                 </div>
-
-                <div className={`${style.searchIconBox} ${style.flex}`}>
+                <div
+                    className={style.search}
+                    style={borderStyle}
+                    onFocus={() => setSearchClick(true)}
+                    onBlur={() => setSearchClick(false)}
+                >
                     <div className={style.search__prefix}>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </div>
                     <input
-                        className={style.searchInput}
                         type="search"
-                        placeholder="이름,  사번 검색"
+                        placeholder="이름, ID 검색"
                         onChange={searchHandler}
                     />
                 </div>
@@ -199,10 +209,10 @@ const EmployeeAccount = () => {
                 itemsCountPerPage={accountPerPage} // 한페이지당 보여줄 리스트 아이템 개수
                 totalItemsCount={accountList.length} // 총 아이템의 개수
                 pageRangeDisplayed={5} // Paginator 내에서 보여줄 페이지의 범위
-                prevPageText={<FontAwesomeIcon icon={faAngleLeft}/>}
-                nextPageText={<FontAwesomeIcon icon={faAngleRight}/>}
-                lastPageText={<FontAwesomeIcon icon={faAnglesRight}/>}
-                firstPageText={<FontAwesomeIcon icon={faAnglesLeft}/>}
+                prevPageText={<FontAwesomeIcon icon={faAngleLeft} />}
+                nextPageText={<FontAwesomeIcon icon={faAngleRight} />}
+                lastPageText={<FontAwesomeIcon icon={faAnglesRight} />}
+                firstPageText={<FontAwesomeIcon icon={faAnglesLeft} />}
                 onChange={handlePageChange} // 페이지가 바뀔 때 핸들링 해 줄 함수
             ></Pagination>
         </div>

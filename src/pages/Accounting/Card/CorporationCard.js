@@ -78,6 +78,13 @@ const CorporationCard = () => {
         })
     }
 
+        // 검색 박스 클릭 시 이벤트
+        const [isSearchClick, setSearchClick] = useState(false);
+        const borderStyle = {
+            border: isSearchClick ? "1px solid #20412E" : "1px solid #7d7d7d40",
+            borderRadius: "4px",
+        };
+
     const [currentCardList, setCurrentCardList] = useState(cardList);
     const [page, setPage] = useState(1);
     const accountPerPage = 10;
@@ -115,15 +122,18 @@ const CorporationCard = () => {
                         </AddCardModal>
                     )}
                 </div>
-
-                <div className={`${style.searchIconBox} ${style.flex}`}>
+                <div
+                    className={style.search}
+                    style={borderStyle}
+                    onFocus={() => setSearchClick(true)}
+                    onBlur={() => setSearchClick(false)}
+                >
                     <div className={style.search__prefix}>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </div>
                     <input
-                        className={style.searchInput}
                         type="search"
-                        placeholder="이름,  사번 검색"
+                        placeholder="이름, ID 검색"
                         onChange={searchHandler}
                     />
                 </div>
