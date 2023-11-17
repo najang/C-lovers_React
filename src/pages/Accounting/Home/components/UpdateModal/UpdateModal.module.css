@@ -84,3 +84,9 @@
     background-color: #75b47d;
     color: white;
   }
+
+   /* 인풋 */
+   input[type="text"]{
+    width: 200px;
+    height: 32px;
+  }
