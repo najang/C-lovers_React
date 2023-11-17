@@ -1,0 +1,86 @@
+/* 모달창 띄울 때 배경화면 */
+.container {
+    /* 모달창 크기 */
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  
+    /* 최상단 위치 */
+    z-index: 999;
+  
+    /* 중앙 배치 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    /* 모달창 디자인 */
+    background-color: #00000020;
+  }
+
+/* 모달창 */
+.modalBox {
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+  
+    /* 중앙 배치 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    background-color: white;
+    border: 1px solid #7d7d7d20;
+    border-radius: 7px;
+    padding: 30px;
+  }
+
+  .top,.Box{
+    display: flex;
+  }
+  .Box{
+    margin-bottom: 10px;
+  }
+  .top{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .nameLabel{
+    width: 120px; 
+  }
+  .selectBox{
+    width: 200px; height: 32px; border: none;
+    border: 1px solid #7d7d7d40;
+  }
+  /*  */
+  .accountBox{
+    margin-bottom: 0px;
+  }
+  .accountEx{
+    font-size: 13px;
+    margin-left: 120px;
+  }
+  .accountEx p {
+    color: #75b47d;
+  }
+  /*  */
+  .btnBox{
+    text-align: center;
+    margin-top: 30px;
+  }
+  .btn{
+    width: 80px; height: 30px;
+    border: 1px solid #7d7d7d40;
+    border-radius: 4px;
+  }
+  .cancle{
+    background-color: #7d7d7d20; 
+    margin-right: 8px;
+  }
+  .save{
+    background-color: #75b47d;
+    color: white;
+  }

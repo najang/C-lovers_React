@@ -1,0 +1,116 @@
+.containerBox {
+    padding: 20px 24px;
+    width: 100%;
+    height: 100%;
+    min-width: 750px;
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+
+  .smTitle {
+    width: 100%; height: 50px;
+    margin-bottom: 30px;
+    display: flex; align-items: center;
+    background-color: #DCEDD4;
+  }
+
+  .smTitle__inner{
+    width: 130px; height: 40px;
+    background-color: white;
+    display: flex; align-items: center; justify-content: center;
+    margin-left: 20px; margin-top: 10px;
+    font-weight: 600;
+  }
+  .flex{
+    display: flex;
+  }
+/* 중간 */
+  .account_md{
+    width: 100%; height: 35px;    
+    justify-content: space-between;
+  }
+/* 검색부분 */
+.search {
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+.search__prefix {
+  margin: 0 10px;
+}
+.search__prefix * {
+  color: #b5b5bb;
+}
+.search > input {
+  border: none;
+  outline: none;
+  width: 80%;
+}
+
+  /* 계좌추가 */
+  .accountAdd{
+    border: none;
+    background-color: white; color: #095544; font-size: 16px; cursor: pointer;
+    width: 125px; height: 28px;
+  }
+
+  /* 테이블 */
+  .userTable {
+    margin-top: 20px;
+  }
+  
+  .userTable__header {
+    display: flex;
+    background-color: #dcedd4;
+    padding: 10px 0px;
+    text-align: center;
+  }
+
+  .userTable__header > div:not(:first-child) {
+    border-left: 1px solid #7d7d7d40;
+    width: 20%;
+  }
+
+  .userTable__body > div > div:not(:first-child) {
+    padding-left: 10px; padding-right: 10px;
+    border-left: 1px solid #7d7d7d40;
+    width: 20%;
+  }
+  .userTable__body > div > div{
+    text-align: center;
+  }
+
+  .accountInfo{
+    padding: 10px 0;
+    width: 100%;
+  }
+  .name,.userId,.bankName,.accountNum,.regDate,.DelUp{
+    width: 20%;
+  }
+  .accountNum{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .accountInfo:hover {
+    background-color: #f3f7f1;
+  }
+  .accountInfo:hover .UpdateBtn,.accountInfo:hover .DelBtn{
+    background-color: #f3f7f1;
+  }
+  .DelUp{display: flex; justify-content: right;}
+  .UpdateBtn,.DelBtn{
+    border: none;
+    background-color: white; color: #095544; font-size: 16px; cursor: pointer;
+    padding-right: 10px;
+  }
+
+  .listZero{
+    margin: 30px 0px;
+    text-align: center;
+  }

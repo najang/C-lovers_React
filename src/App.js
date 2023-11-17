@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { createContext, useState } from "react";
 import Office from "./pages/Office/Office";
 import Main from "./pages/Main/Main";
+import Accounting from "./pages/Accounting/Accounting";
 
 export const SubMenuContext = createContext();
 export const ProfileCardContext = createContext();
@@ -68,6 +69,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/office/*" element={<Office />}></Route>
+            <Route path="/accounting/*" element={<Accounting />}></Route>
           </Routes>
         </Router>
       </ProfileCardContext.Provider>

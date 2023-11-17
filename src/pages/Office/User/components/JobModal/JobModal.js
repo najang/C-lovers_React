@@ -81,7 +81,7 @@ const JobModal = ({
       .then((resp) => {
         alert("직위 수정이 완료되었습니다.");
         closeModal();
-        setJobModify(false);
+        setJobModify(true);
       })
       .catch((e) => {
         alert(
