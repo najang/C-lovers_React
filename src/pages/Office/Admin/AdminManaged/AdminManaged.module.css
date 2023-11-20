@@ -89,14 +89,11 @@
 
 /* 테이블의 세로줄 제거 */
 .office__admin__table th, .office__admin__table td {
-    border:none;
+    border-right: none;
+    border-left: none;
     width: 15%;
     text-align: center;
     padding: 10px 0;
-}
-
-.office__admin__table th{
-    border-bottom: none;
 }
 
 .office__admin__table th:last-child,
@@ -110,10 +107,10 @@
 }
 
 .office__adminmanage__button{
-    width:80px;
+    width:140px;
     height:30px;
     margin-top:5px;
-    margin-left:215px;
+    margin-left:183px;
     background-color: #FFFFFF00;
     border: 1px solid #7D7D7260;
     border-radius: 4px;
@@ -127,3 +124,4 @@
     transition-duration: 0.25s;
     cursor: pointer;
 }
+

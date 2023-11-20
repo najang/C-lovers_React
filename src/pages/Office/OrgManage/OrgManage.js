@@ -1,15 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import styles from './OrgManage.module.css';
 import { MenuContext } from "../../Office/Office";
+import WhiteBtn from "../../../components/WhiteBtn/WhiteBtn"
 import OrgNode from './OrgNode/OrgNode';
 import axios from 'axios';
 
 const OrgManage = () => {
     const { setSelectedMenu } = useContext(MenuContext);
     const [officeData, setOfficeData] = useState(null);
-    // 컨텍스트 메뉴 상태
-    const [contextMenu, setContextMenu] = useState(null);
-
 
     useEffect(() => {
         axios.get("/org/office").then((resp) => {
@@ -20,50 +18,9 @@ const OrgManage = () => {
         });
 
         setSelectedMenu("organization");
-
         
-        
+    }, [setSelectedMenu]); // 의존성 배열에서 contextMenu 제거
 
-    }, [setSelectedMenu,contextMenu]); // 의존성 배열에서 contextMenu 제거
-
-    const onContextMenu = (id, position) => {
-
-        const menuWidth = 150; // 가정한 컨텍스트 메뉴의 너비
-        const menuHeight = 100; // 가정한 컨텍스트 메뉴의 높이
-
-
-        const { innerWidth, innerHeight } = window;
-
-
-        const x = position.x + menuWidth > innerWidth ? position.x - menuWidth : position.x;
-
-        const y = position.y + menuHeight > innerHeight ? position.y - menuHeight : position.y;
-
-        setContextMenu({
-            nodeId: id,
-            xPos: x,
-            yPos: y,
-        });
-    };
-
-    // 컨텍스트 메뉴를 렌더링하는 함수
-    const renderContextMenu = () => {
-        if (!contextMenu) return null;
-
-        // 컨텍스트 메뉴 스타일
-        const menuStyle = {
-            position: 'absolute',
-            top: `${contextMenu.yPos}px`,
-            left: `${contextMenu.xPos}px`,
-            backgroundColor: `white`
-        };
-
-        return (
-            <div style={menuStyle} className={styles.context__menu}>
-                {`aaaaaaa`}
-            </div>
-        );
-    };
 
 
     const renderOrgNodes = (departments) => {
@@ -86,7 +43,7 @@ const OrgManage = () => {
 
             return (
                 <div key={dept.id} className={deptStyles}>
-                    <OrgNode id={dept.id} name={dept.dept_name} empCount={dept.dept_officer} onContextMenu={onContextMenu} />
+                    <OrgNode name={dept.dept_name} empCount={dept.dept_officer}/>
                     {taskLength > 0 && (
                         <div className={styles.tree__branch}>
                             {dept.deptTask.map((task, taskIndex) => {
@@ -103,7 +60,7 @@ const OrgManage = () => {
 
                                 return (
                                     <div key={task.id} className={taskStyles}>
-                                        <OrgNode id={task.id} name={task.task_name} empCount={task.dept_task_officer} onContextMenu={onContextMenu} />
+                                        <OrgNode name={task.task_name} empCount={task.dept_task_officer}/>
                                     </div>
                                 );
                             })}
@@ -121,7 +78,7 @@ const OrgManage = () => {
 
         return (
             <div className={styles.tree}>
-                <OrgNode id={officeData.id} name={officeData.office_name} empCount={officeData.total_officer} onContextMenu={onContextMenu} />
+                <OrgNode name={officeData.office_name} empCount={officeData.total_officer}/>
                 <div className={styles.tree__branch}>
                     {renderOrgNodes(officeData.department)}
                 </div>
@@ -154,8 +111,12 @@ const OrgManage = () => {
                         <tr>
                             <td colSpan={3} className={styles.tree__td}>
                                 {renderOrgChart()}
-                                {renderContextMenu()}
                             </td>
+                        </tr>
+                        <tr>
+                            <td className={styles.org__sort}><WhiteBtn title="오피스 정보 수정"></WhiteBtn></td>
+                            <td className={styles.org__sort}><WhiteBtn title="상위부서 정보 수정"></WhiteBtn></td>
+                            <td className={styles.org__sort}><WhiteBtn title="부서 정보 수정"></WhiteBtn></td>
                         </tr>
                     </tbody>
                 </table>

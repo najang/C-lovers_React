@@ -26,6 +26,20 @@
     margin-bottom: 20px;
 }
 
+.org__sort{
+    text-align: center; /* 가로 방향 가운데 정렬 */
+    vertical-align: middle; /* 세로 방향 가운데 정렬 */
+}
+
+.org__button{
+    background-color: #DCEDD4;
+    width : 120px;
+    height : 40px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor:pointer;
+}
+
 .tree__div {
     padding: 20px;
 }
@@ -110,8 +124,35 @@
     border-radius: 0;
 }
 
-.context__menu{
-    z-index: 10;
-    background-color: white;
-    
+/* 테이블의 기본 스타일 */
+.office__admin__table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
 }
+
+/* 테이블 헤더 스타일 */
+.office__admin__table thead th {
+    background-color: #DCEDD4;
+    padding: 10px 0;
+    border-bottom: 1px solid #6c6c7250;
+}
+
+/* 테이블 본문 스타일 */
+.office__admin__table tbody td {
+    padding: 10px 0;
+    border-bottom: 1px solid #6c6c7250;
+}
+
+/* 테이블의 세로줄 제거 */
+.office__admin__table th, .office__admin__table td {
+    border-right: none;
+    border-left: none;
+}
+
+/* 테이블 행 마우스 오버 시 배경색 변경 */
+.office__admin__table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+
