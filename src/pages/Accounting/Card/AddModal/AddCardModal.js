@@ -7,7 +7,7 @@ import axios from "axios";
 const AddCardModal = ({setAddModalOpen, setAddModify}) =>{
 
     // 신용카드 regex
-    const cardRegex = /^[0-9]{4}[-\s\.]?[0-9]{4}[-\s\.]?[0-9]{4}[-\s\.]?[0-9]{4}$/;
+    const cardRegex = /^[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}$/;
     // 카드 regex 결과
     const [regexResult, setRegexResult] = useState(false);
 
