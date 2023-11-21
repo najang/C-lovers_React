@@ -17,7 +17,6 @@ const Admin = () => {
   return (
     <Routes>
       <Route path="/" element={<AdminManaged />}></Route>
-      <Route path="/userRegistration" element={<AdminRegistration />}></Route>
     </Routes>
   );
 };
