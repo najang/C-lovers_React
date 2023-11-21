@@ -46,6 +46,7 @@
 }
 
 .office__admin__maindiv{
+    max-height: 190px;
     float:right;
     width:84%;
     overflow-y: auto;

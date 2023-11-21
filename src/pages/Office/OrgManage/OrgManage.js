@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import styles from './OrgManage.module.css';
 import { MenuContext } from "../../Office/Office";
 import WhiteBtn from "../../../components/WhiteBtn/WhiteBtn"
-import OrgNode from './OrgNode/OrgNode';
+import OrgNode from './components/OrgNode/OrgNode';
 import axios from 'axios';
 
 const OrgManage = () => {

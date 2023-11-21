@@ -34,6 +34,7 @@ const UserManaged = () => {
     // 직원 총 인원수 불러오기
     // 직원 리스트 불러오기
     axios.get("/office/userList").then((resp) => {
+      console.log(resp.data);
       setUserCount(resp.data.length);
       setUserList(resp.data);
     });
