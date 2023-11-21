@@ -6,8 +6,10 @@ import User from "./User/User";
 import Admin from "./Admin/Admin";
 import OfficeHome from "./Home/OfficeHome";
 import OrgManage from "./OrgManage/OrgManage";
-import { createContext, useState, useRef, useEffect, useContext } from "react";
+import { createContext, useState, useContext } from "react";
 import { SubMenuContext } from "../../App";
+// import { MenuContext } from "../Accounting/Accounting";
+import { MenuContext } from "../../App";
 
 const Page1 = () => {
   return <div>Page1</div>;
@@ -17,10 +19,12 @@ const Page2 = () => {
   return <div>Page2</div>;
 };
 
-export const MenuContext = createContext();
+//export const MenuContext = createContext();
 
 const Office = () => {
-  const [selectedMenu, setSelectedMenu] = useState("office");
+  //const [selectedMenu, setSelectedMenu] = useState("office");
+  const { selectedMenu, setSelectedMenu } = useContext(MenuContext);
+  //setSelectedMenu = "office";
   const { handlerClickBackground } = useContext(SubMenuContext);
   return (
     <MenuContext.Provider value={{ selectedMenu, setSelectedMenu }}>
