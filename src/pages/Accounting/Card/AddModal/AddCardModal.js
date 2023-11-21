@@ -45,9 +45,13 @@ const AddCardModal = ({setAddModalOpen, setAddModify}) =>{
         }
 
         axios.post("/api/accounting/cardInsert",addCard).then((resp)=>{
-            console.log("삽입 성공");
-            closeModal();
-            setAddModify(true);
+            console.log(resp.data);
+            if(resp.data == "성공"){
+                closeModal();
+                setAddModify(true);
+            }else{
+                alert(resp.data);
+            }
         }).catch(e=>{
             console.log("실패");
         })
