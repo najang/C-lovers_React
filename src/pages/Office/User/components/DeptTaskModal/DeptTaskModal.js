@@ -74,7 +74,7 @@ const DeptTaskModal = ({
     axios
       .post("/office/updateUserDeptTask", modifyUserList)
       .then((resp) => {
-        alert("직위 수정이 완료되었습니다.");
+        alert("소속조직 수정이 완료되었습니다.");
         closeModal();
         setDeptTaskModify(true);
       })

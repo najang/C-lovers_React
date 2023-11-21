@@ -1,0 +1,303 @@
+.office__admin__div {
+    margin: 20px;
+    border: 1px solid #6c6c7250;
+    border-radius: 4px;
+}
+
+.office__admin__title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.office__admin__updiv {
+    padding: 20px;
+}
+
+.office__admin__downdiv {
+    overflow-y: hidden;
+    border: 1px solid #6c6c7250;
+
+}
+
+.office__admin__nav {
+    float: left;
+    width: 16%;
+    height: 100%;
+}
+
+.office__admin__nav__div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+}
+
+.office__admin__nav__div__selected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    background-color: #DCEDD4;
+}
+
+
+.office__admin__nav__div:hover {
+    cursor: pointer;
+}
+
+.office__admin__maindiv {
+    max-height: 190px;
+    float: right;
+    width: 84%;
+    overflow-y: auto;
+}
+
+.office__admin__maindiv::-webkit-scrollbar {
+    width: 20px;
+}
+
+.office__admin__maindiv::-webkit-scrollbar-thumb {
+    background-color: #7d7d7d20;
+    border-radius: 10px;
+
+    border: 7px solid #FFFFFF
+}
+
+.office__admin__maindiv::-webkit-scrollbar-track {
+    background-color: #FFFFFF
+}
+
+/* 테이블의 기본 스타일 */
+.office__admin__table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    table-layout: fixed;
+}
+
+/* 테이블 헤더 스타일 */
+.office__admin__table thead th {
+    background-color: #DCEDD4;
+    padding: 10px 0;
+    border-bottom: 1px solid #6c6c7250;
+}
+
+/* 테이블 본문 스타일 */
+.office__admin__table tbody td {
+    padding: 10px 0;
+    border-bottom: 1px solid #6c6c7250;
+}
+
+/* 테이블의 세로줄 제거 */
+.office__admin__table th,
+.office__admin__table td {
+    border-right: none;
+    border-left: none;
+    width: 15%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.office__admin__table th:last-child,
+.office__admin__table td:last-child {
+    width: 25%;
+}
+
+/* 테이블 행 마우스 오버 시 배경색 변경 */
+.office__admin__table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.office__adminmanage__button {
+    width: 140px;
+    height: 30px;
+    margin-top: 5px;
+    margin-left: 183px;
+    background-color: #FFFFFF00;
+    border: 1px solid #7D7D7260;
+    border-radius: 4px;
+    color: #6c6c72;
+    ;
+}
+
+.office__adminmanage__button:hover {
+    background-color: #7D7D7260;
+    color: white;
+    border: none;
+    transition-duration: 0.25s;
+    cursor: pointer;
+}
+
+.user__container {
+    padding: 20px 24px;
+    width: 100%;
+    height: 100%;
+    min-width: 750px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.userInfo {
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.userManagedMenu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.userMenu {
+    display: flex;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.userMenu__select,
+.userMenu>button {
+    margin-left: 10px;
+    margin-right: 35px;
+}
+
+.userMenu__select {
+    width: 20px;
+    color: #095544;
+}
+
+.userMenu>button {
+    background-color: white;
+    border: none;
+    font-size: 16px;
+    color: #095544;
+    cursor: pointer;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    width: 200px;
+}
+
+.search__prefix {
+    margin: 0 10px;
+}
+
+.search__prefix * {
+    color: #b5b5bb;
+}
+
+.search>input {
+    border: none;
+    outline: none;
+    width: 80%;
+}
+
+input[type="checkbox"] {
+    margin-top: 0px;
+    margin-right: 0px;
+}
+
+.userTable {
+    margin-top: 20px;
+}
+
+.userTable__header {
+    display: flex;
+    background-color: #dcedd4;
+    padding: 10px 0px;
+    text-align: center;
+}
+
+.userTable__header>div {
+    border-left: 1px solid #7d7d7d40;
+}
+
+.userTable__body>div>div:not(:first-child) {
+    text-align: start;
+    padding-left: 30px;
+    border-left: 1px solid #7d7d7d40;
+}
+
+.selector {
+    width: 10%;
+}
+
+.name {
+    width: 20%;
+}
+
+.userId {
+    width: 25%;
+}
+
+.deptTask {
+    width: 25%;
+}
+
+.job {
+    width: 20%;
+}
+
+.body__userInfo {
+    display: flex;
+    padding: 10px 0px;
+    text-align: center;
+    border-bottom: 1px solid #7d7d7d40;
+}
+
+.body__userInfo:hover {
+    background-color: #f3f7f1;
+}
+
+.listZero {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    color: #b5b5bb;
+}
+
+.userMenuSmallBtn {
+    display: none;
+}
+
+@media (max-width: 935px) {
+    .userTable__header>div:not(:first-child) {
+        padding: 0 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .userTable__body>div>div:not(:first-child) {
+        padding: 0 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .deleteBtn,
+    .jobModifyBtn,
+    .deptTaskModifyBtn {
+        display: none;
+    }
+
+    .userMenu>button {
+        margin: 0;
+    }
+
+    .userMenuSmallBtn {
+        display: block;
+        width: 25px;
+    }
+
+    .userMenuSmallBtn * {
+        color: #095544;
+    }
+}

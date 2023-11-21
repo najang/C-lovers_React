@@ -1,5 +1,6 @@
 .org__mother__div {
     padding: 20px;
+    overflow-x:auto;
 }
 
 .org__title {
@@ -11,6 +12,10 @@
     font-weight: 700;
 }
 
+.org__detail{
+    margin-left:20px;
+}
+
 .org__table {
     min-width: 700px;
     margin-top: 20px;
@@ -19,6 +24,20 @@
 .org__level {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.org__sort{
+    text-align: center; /* 가로 방향 가운데 정렬 */
+    vertical-align: middle; /* 세로 방향 가운데 정렬 */
+}
+
+.org__button{
+    background-color: #DCEDD4;
+    width : 120px;
+    height : 40px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor:pointer;
 }
 
 .tree__div {
@@ -104,4 +123,6 @@
     margin-top: 1px;
     border-radius: 0;
 }
+
+
 
