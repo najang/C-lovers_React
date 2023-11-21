@@ -7,8 +7,8 @@ const OfficeHome = () => {
 
     return(
         <div>
-            <OfficeAdmin></OfficeAdmin>
             <OfficeInfo></OfficeInfo>
+            <OfficeAdmin></OfficeAdmin>
         </div>
     );
 };
