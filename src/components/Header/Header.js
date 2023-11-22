@@ -16,6 +16,7 @@ const Header = ({ title }) => {
   const { naviModalOpen, setNaviModalOpen } = useContext(SubMenuContext);
   const { profileCardOpen, setProfileCardOpen } =
     useContext(ProfileCardContext);
+  const [profileUrl, setProfileUrl] = useState("");
 
   const showNaviModal = () => {
     setNaviModalOpen(!naviModalOpen);
@@ -51,6 +52,24 @@ const Header = ({ title }) => {
       });
   }, []);
 
+  useEffect(() => {
+    console.log(userBasicInfo.profile_img);
+    console.log(userBasicInfo.profile_img !== "");
+    console.log(userBasicInfo.profile_img !== undefined);
+    console.log("경로" !== "");
+    console.log("경로" !== undefined);
+    if (
+      userBasicInfo.profile_img !== "" &&
+      userBasicInfo.profile_img !== undefined
+    ) {
+      console.log("이미지 있음");
+      setProfileUrl("/uploads/" + userBasicInfo.profile_img);
+    } else {
+      console.log("이미지 없음");
+      setProfileUrl("/assets/profile.png");
+    }
+  }, [userBasicInfo]);
+
   return (
     <div className={style.header}>
       <div className={style.headerLeft}>
@@ -83,7 +102,7 @@ const Header = ({ title }) => {
           className={`profile ${style.headerRight__box}`}
           onClick={showProfileCardModal}
         >
-          <img src={profile} alt="" className={style.profileImg} />
+          <img src={profileUrl} alt="" className={style.profileImg} />
         </div>
         {profileCardOpen && (
           <ProfileModal userBasicInfo={userBasicInfo}></ProfileModal>
