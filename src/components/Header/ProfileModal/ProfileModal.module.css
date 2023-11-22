@@ -22,6 +22,7 @@
 .userInfo__profileImg img {
   width: 75px;
   height: 75px;
+  border-radius: 50%;
 }
 .userInfo__info {
   margin-left: 20px;
@@ -43,4 +44,5 @@
   background-color: transparent;
   border: none;
   font-size: 14px;
+  cursor: pointer;
 }
