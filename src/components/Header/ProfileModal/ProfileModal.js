@@ -7,7 +7,7 @@ const ProfileModal = ({ userBasicInfo }) => {
   const logoutHandler = () => {
     console.log("로그아웃");
     axios.get("/members/adminLogout").then(() => {
-      window.location.href = "/";
+      //window.location.href = "/";
     });
   };
   return (

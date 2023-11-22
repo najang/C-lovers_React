@@ -25,6 +25,10 @@ const Header = ({ title }) => {
     setProfileCardOpen(!profileCardOpen);
   };
 
+  const showHome = () => {
+    window.location.href = "/";
+  };
+
   // 사용자 기본 정보
   const [userBasicInfo, setUserBasicInfo] = useState({});
   useEffect(() => {
@@ -44,9 +48,9 @@ const Header = ({ title }) => {
   return (
     <div className={style.header}>
       <div className={style.headerLeft}>
-        <Link to="/">
-          <div className={style.headerLeft__logo}>C-lovers</div>
-        </Link>
+        <div className={style.headerLeft__logo} onClick={showHome}>
+          C-lovers
+        </div>
 
         {title !== "오피스 홈" ? (
           <div className={style.headerLeft__dropNav} onClick={showNaviModal}>

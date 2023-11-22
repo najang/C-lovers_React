@@ -52,9 +52,14 @@ const AddModal = ({ setAddModalOpen, setAddModify }) => {
         }
 
         axios.post("/api/accounting", addAccountList).then((resp) => {
-            console.log("삽입성공");
-            closeModal();
-            setAddModify(true);
+            console.log(resp);
+            if(resp.data == "성공"){
+                closeModal();
+                setAddModify(true);
+            }else if(resp.data =="실패"){
+                alert("사번을 다시 입력해주세요.");
+            }
+            
         }).catch(e => {
             console.log("실패");
         })

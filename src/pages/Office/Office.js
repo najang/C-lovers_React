@@ -6,8 +6,11 @@ import User from "./User/User";
 import Admin from "./Admin/Admin";
 import OfficeHome from "./Home/OfficeHome";
 import OrgManage from "./OrgManage/OrgManage";
-import { createContext, useState, useRef, useEffect, useContext } from "react";
+import PositionDuty from "./PositionDuty/PositionDuty";
+import { createContext, useState, useContext } from "react";
 import { SubMenuContext } from "../../App";
+// import { MenuContext } from "../Accounting/Accounting";
+import { MenuContext } from "../../App";
 
 const Page1 = () => {
   return <div>Page1</div>;
@@ -17,10 +20,12 @@ const Page2 = () => {
   return <div>Page2</div>;
 };
 
-export const MenuContext = createContext();
+//export const MenuContext = createContext();
 
 const Office = () => {
-  const [selectedMenu, setSelectedMenu] = useState("office");
+  //const [selectedMenu, setSelectedMenu] = useState("office");
+  const { selectedMenu, setSelectedMenu } = useContext(MenuContext);
+  //setSelectedMenu = "office";
   const { handlerClickBackground } = useContext(SubMenuContext);
   return (
     <MenuContext.Provider value={{ selectedMenu, setSelectedMenu }}>
@@ -34,7 +39,7 @@ const Office = () => {
               <Route path="/administrator" element={<Admin />}></Route>
               <Route path="/organization" element={<OrgManage />}></Route>
               <Route path="/user/*" element={<User />}></Route>
-              <Route path="/positionduty" element={<Page1 />}></Route>
+              <Route path="/positionduty" element={<PositionDuty />}></Route>
               <Route path="/inactiveuser" element={<Page2 />}></Route>
             </Routes>
           </div>
