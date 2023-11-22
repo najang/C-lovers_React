@@ -1,0 +1,139 @@
+.position__container {
+    margin: 20px;
+}
+
+.position__title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.position__hr {
+    margin-bottom: 20px;
+}
+
+.position__div{
+    width: 100%;
+    height:640px;
+}
+
+.position__leftdiv{
+    width:60%;
+    height: 100%;
+    overflow-y:auto;
+    float:left;
+}
+
+.postion__rightdiv{
+    width:40%;
+    float:right;
+}
+
+.position__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.position__row {
+    background-color: #fff;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.position__plus{
+    color:white;
+}
+
+.position__cellsec{
+
+    padding: 10px 15px;
+    text-align: center;
+    background-color: #dcedd4;
+}
+
+.position__cell {
+    padding: 10px 15px;
+    text-align: left;
+}
+
+.position__addButton {
+    background-color: #dcedd4;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    border-radius: 10px;
+}
+
+.position__addButton:hover {
+    background-color: #095544;
+}
+
+.position__menubox{
+    width:100%;
+    padding:10px;
+}
+
+.position__insertbox{
+    padding-left:15px;
+    padding-top: 5px;
+    padding-bottom : 5px;   
+}
+
+.position__modifybox{
+    padding-left:15px;
+    padding-top:10px;
+    padding-bottom : 5px;
+}
+
+.position__deletebox{
+    padding-left:15px;
+    padding-top:10px;
+    padding-bottom : 5px;
+}
+
+.position__radiobox{
+    padding-left:15px;
+    padding-top:10px;
+    padding-bottom : 5px;
+}
+
+.position__insertinput{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+.position__Btn{
+    width:100px;
+    height:32px;
+    border-radius: 8px;
+    border:none;
+    padding: 0 10px 0 10px ;
+    background-color: #dcedd4;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.position__selectedPositionInfo{
+    font-size:x-small;
+    color:#a0a0a0;
+}
+
+.position__Btn:hover{
+    background-color: #095544;
+    color:#e0e0e0;
+}
+
+.position__deleteform{
+    margin-top : 10px;
+    margin-bottom : 10px;
+}
+
+.position__radioform{
+    margin-top : 10px;
+    margin-bottom : 10px;
+}

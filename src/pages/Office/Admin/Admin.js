@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import AdminManaged from "./AdminManaged/AdminManaged";
-import AdminRegistration from "./AdminRegistration/AdminRegistration";
 // import { MenuContext } from "../../Office/Office";
 import { MenuContext } from "../../../App";
 import { useEffect, useContext } from "react";
