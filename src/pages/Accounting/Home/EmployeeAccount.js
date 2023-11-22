@@ -32,6 +32,7 @@ const EmployeeAccount = () => {
     const [updateModify, setUpdateModify] = useState(false); // 수정
     const [searchModify, setSearchModify] = useState(false);
 
+    // 추가, 삭제 , 수정되면 바로 반영되도록
     useEffect(() => {
         setSelectedMenu("accounting");
 
@@ -60,8 +61,9 @@ const EmployeeAccount = () => {
         setAddModalOpen(true);
     }
 
-    // 계좌수정 id랑 같은 거 저장
+    // 계좌수정: id랑 같은 데이터 저장
     const [accountOneList, setAccountOneList] = useState({});
+
     // 계좌 수정 모달 띄우기
     const showUpdateModalOpen = (id) => {
         setUpdateModalOpen(true);

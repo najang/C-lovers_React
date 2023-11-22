@@ -78,12 +78,12 @@ const CorporationCard = () => {
         })
     }
 
-        // 검색 박스 클릭 시 이벤트
-        const [isSearchClick, setSearchClick] = useState(false);
-        const borderStyle = {
-            border: isSearchClick ? "1px solid #20412E" : "1px solid #7d7d7d40",
-            borderRadius: "4px",
-        };
+    // 검색 박스 클릭 시 이벤트
+    const [isSearchClick, setSearchClick] = useState(false);
+    const borderStyle = {
+        border: isSearchClick ? "1px solid #20412E" : "1px solid #7d7d7d40",
+        borderRadius: "4px",
+    };
 
     const [currentCardList, setCurrentCardList] = useState(cardList);
     const [page, setPage] = useState(1);

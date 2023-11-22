@@ -26,6 +26,7 @@ const UpdateModal = ({ setUpdateModalOpen, setUpdateModify, accountOneList,setAc
        console.log(accountOneList);
     }
 
+    // 수정 버튼
     const updateHandler = (e) => {
         axios.put("/api/accounting",accountOneList).then((resp)=>{
             setUpdateModify(true);
