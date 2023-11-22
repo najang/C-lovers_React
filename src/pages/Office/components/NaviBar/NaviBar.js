@@ -2,7 +2,8 @@ import style from "./NaviBar.module.css";
 import NaviBox from "../../../../components/NaviBox/NaviBox";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { MenuContext } from "../../Office";
+// import { MenuContext } from "../../Office";
+import { MenuContext } from "../../../../App";
 
 const NaviBar = () => {
   //const [selectedMenu, setSelectedMenu] = useState("office");
