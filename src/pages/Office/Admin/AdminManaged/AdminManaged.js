@@ -199,7 +199,7 @@ const AdminManaged = () => {
                                                     name=""
                                                     id={admin.id}
                                                     onChange={checkItemHandler}
-                                                    checked={checkItems.includes(admin.id)} />
+                                                    defaultChecked={checkItems.includes(admin.id)} />
                                             </td>
                                             <td>{admin.emp_name}</td>
                                             <td>{admin.dept_name}</td>
