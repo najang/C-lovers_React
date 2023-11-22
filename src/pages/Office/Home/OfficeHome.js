@@ -6,13 +6,17 @@ import { useContext, useEffect, useState } from "react";
 import { MenuContext } from "../../../App";
 
 const OfficeHome = () => {
-
-    return(
-        <div>
-            <OfficeInfo></OfficeInfo>
-            <OfficeAdmin></OfficeAdmin>
-        </div>
-    );
+  const { setSelectedMenu } = useContext(MenuContext);
+  useEffect(() => {
+    // 네비바가 user에 고정되도록 설정
+    setSelectedMenu("office");
+  }, []);
+  return (
+    <div>
+      <OfficeInfo></OfficeInfo>
+      <OfficeAdmin></OfficeAdmin>
+    </div>
+  );
 };
 
 export default OfficeHome;

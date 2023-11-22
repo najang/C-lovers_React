@@ -29,6 +29,12 @@ const Header = ({ title }) => {
     window.location.href = "/";
   };
 
+  const showChat = () => {
+    let option = "height=700, width=400";
+    let openUrl = "/chat/goMain";
+    window.open(openUrl, "chatMain", option);
+  };
+
   // 사용자 기본 정보
   const [userBasicInfo, setUserBasicInfo] = useState({});
   useEffect(() => {
@@ -66,12 +72,13 @@ const Header = ({ title }) => {
       </div>
       {naviModalOpen && <NaviModal></NaviModal>}
       <div className={style.headerRight}>
-        <div className={style.headerRight__box}>
+        <div className={style.headerRight__box} onClick={showChat}>
           <FontAwesomeIcon icon={faComment} />
         </div>
-        <div className={style.headerRight__box}>
+
+        {/* <div className={style.headerRight__box}>
           <FontAwesomeIcon icon={faBell} />
-        </div>
+        </div> */}
         <div
           className={`profile ${style.headerRight__box}`}
           onClick={showProfileCardModal}

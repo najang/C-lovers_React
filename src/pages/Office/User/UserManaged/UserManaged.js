@@ -247,7 +247,7 @@ const UserManaged = () => {
           </div>
           <input
             type="search"
-            placeholder="이름, ID 검색"
+            placeholder="이름, 사번 검색"
             onChange={searchHandler}
           />
         </div>
@@ -268,7 +268,7 @@ const UserManaged = () => {
             />
           </div>
           <div className={style.name}>이름</div>
-          <div className={style.userId}>아이디</div>
+          <div className={style.userId}>사번</div>
           <div className={style.deptTask}>직위</div>
           <div className={style.job}>소속 조직</div>
         </div>
