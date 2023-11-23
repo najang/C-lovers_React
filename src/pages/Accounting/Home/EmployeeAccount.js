@@ -34,7 +34,6 @@ const EmployeeAccount = () => {
 
   useEffect(() => {
     setSelectedMenu("accounting");
-
     // 계좌 리스트 불러오기
     axios.get("/api/accounting/accountAll").then((resp) => {
       setAccountList(resp.data);
