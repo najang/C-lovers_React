@@ -17,6 +17,7 @@
   font-size: 20px;
   font-weight: 800;
   color: #095544;
+  cursor: pointer;
 }
 
 .headerLeft__dropNav,
@@ -40,6 +41,7 @@
   text-align: center;
   align-items: center;
   font-size: 25px;
+  cursor: pointer;
 }
 
 .headerRight__box path {
