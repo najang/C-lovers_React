@@ -19,6 +19,7 @@ const AddModal = ({ setAddModalOpen, setAddModify }) => {
     let result = false;
     const handleChange = (e) => {
         const { name, value } = e.target;
+        // 받아온 e.target의 name이 id이면 계좌번호-> regex 검사
         if ([name] == "id") {
             result = accountRegex.test(e.target.value);
             if(result){
@@ -26,6 +27,7 @@ const AddModal = ({ setAddModalOpen, setAddModify }) => {
                 setRegexResult(true);
             }
         } else {
+
             setAddAccountList((prev) => ({ ...prev, [name]: value }));
         }
     }
@@ -52,9 +54,14 @@ const AddModal = ({ setAddModalOpen, setAddModify }) => {
         }
 
         axios.post("/api/accounting", addAccountList).then((resp) => {
-            console.log("삽입성공");
-            closeModal();
-            setAddModify(true);
+            console.log(resp);
+            if(resp.data == "성공"){
+                closeModal();
+                setAddModify(true);
+            }else{
+                alert(resp.data);
+            }
+            
         }).catch(e => {
             console.log("실패");
         })

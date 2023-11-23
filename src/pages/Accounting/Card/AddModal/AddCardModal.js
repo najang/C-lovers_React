@@ -45,9 +45,13 @@ const AddCardModal = ({setAddModalOpen, setAddModify}) =>{
         }
 
         axios.post("/api/accounting/cardInsert",addCard).then((resp)=>{
-            console.log("삽입 성공");
-            closeModal();
-            setAddModify(true);
+            console.log(resp.data);
+            if(resp.data == "성공"){
+                closeModal();
+                setAddModify(true);
+            }else{
+                alert(resp.data);
+            }
         }).catch(e=>{
             console.log("실패");
         })
@@ -98,7 +102,7 @@ const AddCardModal = ({setAddModalOpen, setAddModify}) =>{
                         </div>
                     </div>
                     <div className={style.accountEx}>
-                        <p>숫자로 구성된 4자리씩 12자리</p>
+                        <p>숫자로 구성된 4자리씩 16자리</p>
                     </div>
                 </div>
                 <div className={style.btnBox}>

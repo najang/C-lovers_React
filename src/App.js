@@ -8,8 +8,10 @@ import Accounting from "./pages/Accounting/Accounting";
 
 export const SubMenuContext = createContext();
 export const ProfileCardContext = createContext();
+export const MenuContext = createContext();
 
 function App() {
+  const [selectedMenu, setSelectedMenu] = useState("");
   const [naviModalOpen, setNaviModalOpen] = useState(false);
   const [profileCardOpen, setProfileCardOpen] = useState(false);
   // 모달창 닫기
@@ -65,13 +67,15 @@ function App() {
       <ProfileCardContext.Provider
         value={{ profileCardOpen, setProfileCardOpen, handlerClickBackground }}
       >
-        <Router basename="/admin">
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/office/*" element={<Office />}></Route>
-            <Route path="/accounting/*" element={<Accounting />}></Route>
-          </Routes>
-        </Router>
+        <MenuContext.Provider value={{ selectedMenu, setSelectedMenu }}>
+          <Router basename="/admin">
+            <Routes>
+              {/* <Route path="/" element={<Main />} /> */}
+              <Route path="/office/*" element={<Office />}></Route>
+              <Route path="/accounting/*" element={<Accounting />}></Route>
+            </Routes>
+          </Router>
+        </MenuContext.Provider>
       </ProfileCardContext.Provider>
     </SubMenuContext.Provider>
   );

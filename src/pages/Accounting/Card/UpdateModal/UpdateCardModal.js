@@ -76,7 +76,7 @@ const UpdateCardModal = ({setUpdateModalOpen, setUpdateModify,cardOne,setCardOne
                         </div>
                     </div>
                     <div className={style.accountEx}>
-                        <p>숫자로 구성된 4자리씩 12자리</p>
+                        <p>숫자로 구성된 4자리씩 16자리</p>
                     </div>
                 </div>
                 <div className={style.btnBox}>

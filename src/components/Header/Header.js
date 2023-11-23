@@ -16,6 +16,7 @@ const Header = ({ title }) => {
   const { naviModalOpen, setNaviModalOpen } = useContext(SubMenuContext);
   const { profileCardOpen, setProfileCardOpen } =
     useContext(ProfileCardContext);
+  const [profileUrl, setProfileUrl] = useState("");
 
   const showNaviModal = () => {
     setNaviModalOpen(!naviModalOpen);
@@ -23,6 +24,16 @@ const Header = ({ title }) => {
 
   const showProfileCardModal = () => {
     setProfileCardOpen(!profileCardOpen);
+  };
+
+  const showHome = () => {
+    window.location.href = "/";
+  };
+
+  const showChat = () => {
+    let option = "height=700, width=400";
+    let openUrl = "/chat/goMain";
+    window.open(openUrl, "chatMain", option);
   };
 
   // 사용자 기본 정보
@@ -41,12 +52,30 @@ const Header = ({ title }) => {
       });
   }, []);
 
+  useEffect(() => {
+    console.log(userBasicInfo.profile_img);
+    console.log(userBasicInfo.profile_img !== "");
+    console.log(userBasicInfo.profile_img !== undefined);
+    console.log("경로" !== "");
+    console.log("경로" !== undefined);
+    if (
+      userBasicInfo.profile_img !== "" &&
+      userBasicInfo.profile_img !== undefined
+    ) {
+      console.log("이미지 있음");
+      setProfileUrl("/uploads/" + userBasicInfo.profile_img);
+    } else {
+      console.log("이미지 없음");
+      setProfileUrl("/assets/profile.png");
+    }
+  }, [userBasicInfo]);
+
   return (
     <div className={style.header}>
       <div className={style.headerLeft}>
-        <Link to="/">
-          <div className={style.headerLeft__logo}>C-lovers</div>
-        </Link>
+        <div className={style.headerLeft__logo} onClick={showHome}>
+          C-lovers
+        </div>
 
         {title !== "오피스 홈" ? (
           <div className={style.headerLeft__dropNav} onClick={showNaviModal}>
@@ -62,17 +91,18 @@ const Header = ({ title }) => {
       </div>
       {naviModalOpen && <NaviModal></NaviModal>}
       <div className={style.headerRight}>
-        <div className={style.headerRight__box}>
+        <div className={style.headerRight__box} onClick={showChat}>
           <FontAwesomeIcon icon={faComment} />
         </div>
-        <div className={style.headerRight__box}>
+
+        {/* <div className={style.headerRight__box}>
           <FontAwesomeIcon icon={faBell} />
-        </div>
+        </div> */}
         <div
           className={`profile ${style.headerRight__box}`}
           onClick={showProfileCardModal}
         >
-          <img src={profile} alt="" className={style.profileImg} />
+          <img src={profileUrl} alt="" className={style.profileImg} />
         </div>
         {profileCardOpen && (
           <ProfileModal userBasicInfo={userBasicInfo}></ProfileModal>
